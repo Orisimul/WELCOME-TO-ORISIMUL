@@ -443,5 +443,40 @@ async function finishForm() {
         );
 
 
-        alert(
-            "something went wrong while sending your application :(\
+               alert(
+            "something went wrong while sending your application :(\n\n" +
+            "Check the browser console for the exact error."
+        );
+
+
+        isSubmitting = false;
+
+
+        if (submitButton) {
+            submitButton.disabled = false;
+            submitButton.textContent = "FINISH!!!";
+        }
+
+    }
+}
+
+
+// ================================
+// START
+// ================================
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        console.log(
+            "Orisimul form loaded."
+        );
+
+        setupProfile();
+        setupPfp();
+
+        showPage(currentPage);
+
+    }
+);
