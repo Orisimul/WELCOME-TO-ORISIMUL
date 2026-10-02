@@ -1,25 +1,62 @@
 let currentPage = 1;
-const totalPages = 5;
 
-function showPage(page) {
-    document.querySelectorAll(".page").forEach((p) => {
-        p.classList.remove("active");
+const totalFormPages = 5;
+const thankYouPage = 6;
+
+
+/* =========================
+   ELEMENTS
+========================= */
+
+const pages =
+    document.querySelectorAll(".page");
+
+const progressBar =
+    document.getElementById("progressBar");
+
+const progressText =
+    document.getElementById("progressText");
+
+const progressPercent =
+    document.getElementById("progressPercent");
+
+
+/* =========================
+   SHOW PAGE
+========================= */
+
+function showPage(pageNumber) {
+
+    pages.forEach(page => {
+        page.classList.remove("active");
     });
 
-    const selected = document.querySelector(
-        `.page[data-page="${page}"]`
-    );
+    const page =
+        document.querySelector(
+            `.page[data-page="${pageNumber}"]`
+        );
 
-    if (selected) {
-        selected.classList.add("active");
+    if (page) {
+        page.classList.add("active");
     }
 
-    const percent = Math.round((page / totalPages) * 100);
 
-    document.getElementById("progressBar").style.width = percent + "%";
-    document.getElementById("progressPercent").textContent = percent + "%";
-    document.getElementById("progressText").textContent =
-        `section ${page} of ${totalPages}`;
+    /* Hide progress on thank-you page */
+
+    const progress =
+        document.querySelector(".progress-wrap");
+
+    if (progress) {
+
+        progress.style.display =
+            pageNumber === thankYouPage
+                ? "none"
+                : "block";
+    }
+
+
+    updateProgress();
+
 
     window.scrollTo({
         top: 0,
@@ -27,98 +64,285 @@ function showPage(page) {
     });
 }
 
-function nextPage() {
-    if (currentPage < totalPages) {
-        currentPage++;
-        showPage(currentPage);
+
+/* =========================
+   PROGRESS
+========================= */
+
+function updateProgress() {
+
+    if (currentPage > totalFormPages) {
+        return;
+    }
+
+
+    const percentage =
+        Math.round(
+            (currentPage / totalFormPages) * 100
+        );
+
+
+    if (progressBar) {
+
+        progressBar.style.width =
+            `${percentage}%`;
+    }
+
+
+    if (progressText) {
+
+        progressText.textContent =
+            `section ${currentPage} of ${totalFormPages}`;
+    }
+
+
+    if (progressPercent) {
+
+        progressPercent.textContent =
+            `${percentage}%`;
     }
 }
 
-function prevPage() {
-    if (currentPage > 1) {
-        currentPage--;
-        showPage(currentPage);
+
+/* =========================
+   VALIDATE CURRENT PAGE
+========================= */
+
+function validatePage() {
+
+    const current =
+        document.querySelector(
+            `.page[data-page="${currentPage}"]`
+        );
+
+
+    if (!current) {
+        return true;
     }
-}
 
-document.querySelectorAll('input[name="profile"]').forEach((input) => {
 
-    input.addEventListener("change", () => {
+    const requiredInputs =
+        current.querySelectorAll(
+            "input[required], textarea[required], select[required]"
+        );
 
-        const profileFields =
-            document.getElementById("profileFields");
 
-        if (
-            input.value === "yes" ||
-            input.value === "maybe"
-        ) {
-            profileFields.classList.add("visible");
-        } else {
-            profileFields.classList.remove("visible");
+    for (const input of requiredInputs) {
 
-            document
-                .getElementById("pfpTokenBox")
-                .classList.remove("visible");
+        if (!input.checkValidity()) {
+
+            input.reportValidity();
+
+            return false;
         }
-    });
+    }
+
+
+    return true;
+}
+
+
+/* =========================
+   NEXT
+========================= */
+
+function nextPage() {
+
+    if (!validatePage()) {
+        return;
+    }
+
+
+    if (currentPage < totalFormPages) {
+
+        currentPage++;
+
+        showPage(currentPage);
+    }
+}
+
+
+/* =========================
+   BACK
+========================= */
+
+function previousPage() {
+
+    if (currentPage > 1) {
+
+        currentPage--;
+
+        showPage(currentPage);
+    }
+}
+
+
+/* =========================
+   PROFILE
+========================= */
+
+const profileChoices =
+    document.querySelectorAll(
+        'input[name="profile"]'
+    );
+
+
+const profileFields =
+    document.getElementById(
+        "profileFields"
+    );
+
+
+profileChoices.forEach(choice => {
+
+    choice.addEventListener(
+        "change",
+        () => {
+
+            if (
+                choice.checked &&
+                (
+                    choice.value === "yes" ||
+                    choice.value === "maybe"
+                )
+            ) {
+
+                profileFields.classList.add(
+                    "show"
+                );
+
+            } else {
+
+                profileFields.classList.remove(
+                    "show"
+                );
+
+                hidePfpToken();
+            }
+
+        }
+    );
+
 });
+
+
+/* =========================
+   PFP TOKEN
+========================= */
+
+const pfpChoices =
+    document.querySelectorAll(
+        'input[name="pfp"]'
+    );
+
+
+const tokenBox =
+    document.getElementById(
+        "tokenBox"
+    );
+
+
+const tokenText =
+    document.getElementById(
+        "pfpToken"
+    );
+
 
 function generatePfpToken() {
 
     const characters =
         "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
 
+
     let token = "OR-";
 
+
     for (let i = 0; i < 5; i++) {
-        token += characters[
-            Math.floor(
-                Math.random() * characters.length
-            )
-        ];
+
+        token +=
+            characters[
+                Math.floor(
+                    Math.random() *
+                    characters.length
+                )
+            ];
     }
+
 
     return token;
 }
 
-document
-    .getElementById("pfpYes")
-    .addEventListener("change", () => {
 
-        document
-            .getElementById("pfpToken")
-            .textContent = generatePfpToken();
+function hidePfpToken() {
 
-        document
-            .getElementById("pfpTokenBox")
-            .classList.add("visible");
-    });
+    if (tokenBox) {
 
-document
-    .getElementById("pfpNo")
-    .addEventListener("change", () => {
+        tokenBox.classList.remove(
+            "show"
+        );
+    }
+}
 
-        document
-            .getElementById("pfpTokenBox")
-            .classList.remove("visible");
-    });
+
+pfpChoices.forEach(choice => {
+
+    choice.addEventListener(
+        "change",
+        () => {
+
+            if (
+                choice.checked &&
+                choice.value === "yes"
+            ) {
+
+                tokenText.textContent =
+                    generatePfpToken();
+
+                tokenBox.classList.add(
+                    "show"
+                );
+
+            } else {
+
+                hidePfpToken();
+            }
+
+        }
+    );
+
+});
+
+
+/* =========================
+   FINISH
+========================= */
 
 function finishForm() {
 
-    document.querySelectorAll(".page").forEach((page) => {
-        page.classList.remove("active");
-    });
+    if (!validatePage()) {
+        return;
+    }
 
-    document
-        .querySelector(".progress-area")
-        .style.display = "none";
 
-    document
-        .getElementById("thankYou")
-        .classList.add("active");
+    /*
+        Currently this does NOT send
+        anything anywhere.
 
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
+        It simply shows the thank-you
+        screen.
+
+        Backend can be added later.
+    */
+
+
+    currentPage = thankYouPage;
+
+    showPage(currentPage);
 }
+
+
+/* =========================
+   START
+========================= */
+
+showPage(1);
