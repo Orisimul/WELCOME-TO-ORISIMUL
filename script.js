@@ -1,10 +1,15 @@
-```js
 let currentPage = 1;
 const totalPages = 5;
 
-// Your Supabase Edge Function
 const SUPABASE_FUNCTION_URL =
     "https://ohypogqvidtdfdndtyyc.supabase.co/functions/v1/hyper-responder";
+
+let isSubmitting = false;
+
+
+// ================================
+// PAGE NAVIGATION
+// ================================
 
 function showPage(page) {
     document.querySelectorAll(".page").forEach((p) => {
@@ -21,20 +26,29 @@ function showPage(page) {
 
     const percent = Math.round((page / totalPages) * 100);
 
-    document.getElementById("progressBar").style.width =
-        percent + "%";
+    const progressBar = document.getElementById("progressBar");
+    const progressPercent = document.getElementById("progressPercent");
+    const progressText = document.getElementById("progressText");
 
-    document.getElementById("progressPercent").textContent =
-        percent + "%";
+    if (progressBar) {
+        progressBar.style.width = percent + "%";
+    }
 
-    document.getElementById("progressText").textContent =
-        `section ${page} of ${totalPages}`;
+    if (progressPercent) {
+        progressPercent.textContent = percent + "%";
+    }
+
+    if (progressText) {
+        progressText.textContent =
+            `section ${page} of ${totalPages}`;
+    }
 
     window.scrollTo({
         top: 0,
         behavior: "smooth"
     });
 }
+
 
 function validateCurrentPage() {
     const page = document.querySelector(
@@ -59,6 +73,7 @@ function validateCurrentPage() {
     return true;
 }
 
+
 function nextPage() {
     if (!validateCurrentPage()) {
         return;
@@ -70,6 +85,7 @@ function nextPage() {
     }
 }
 
+
 function prevPage() {
     if (currentPage > 1) {
         currentPage--;
@@ -78,34 +94,44 @@ function prevPage() {
 }
 
 
+// ================================
 // PROFILE FIELDS
+// ================================
 
-document
-    .querySelectorAll('input[name="profile"]')
-    .forEach((input) => {
+const profileInputs =
+    document.querySelectorAll('input[name="profile"]');
 
-        input.addEventListener("change", () => {
+profileInputs.forEach((input) => {
+    input.addEventListener("change", () => {
+        const profileFields =
+            document.getElementById("profileFields");
 
-            const profileFields =
-                document.getElementById("profileFields");
+        const pfpTokenBox =
+            document.getElementById("pfpTokenBox");
 
-            if (
-                input.value === "yes" ||
-                input.value === "maybe"
-            ) {
-                profileFields.classList.add("visible");
-            } else {
-                profileFields.classList.remove("visible");
+        if (!profileFields) {
+            return;
+        }
 
-                document
-                    .getElementById("pfpTokenBox")
-                    .classList.remove("visible");
+        if (
+            input.value === "yes" ||
+            input.value === "maybe"
+        ) {
+            profileFields.classList.add("visible");
+        } else {
+            profileFields.classList.remove("visible");
+
+            if (pfpTokenBox) {
+                pfpTokenBox.classList.remove("visible");
             }
-        });
+        }
     });
+});
 
 
+// ================================
 // PFP TOKEN
+// ================================
 
 function generatePfpToken() {
     const characters =
@@ -124,81 +150,127 @@ function generatePfpToken() {
     return token;
 }
 
-document
-    .getElementById("pfpYes")
-    .addEventListener("change", () => {
 
-        document
-            .getElementById("pfpToken")
-            .textContent = generatePfpToken();
+const pfpYes = document.getElementById("pfpYes");
+const pfpNo = document.getElementById("pfpNo");
+const pfpToken = document.getElementById("pfpToken");
+const pfpTokenBox = document.getElementById("pfpTokenBox");
 
-        document
-            .getElementById("pfpTokenBox")
-            .classList.add("visible");
+
+if (pfpYes) {
+    pfpYes.addEventListener("change", () => {
+        if (pfpToken) {
+            pfpToken.textContent = generatePfpToken();
+        }
+
+        if (pfpTokenBox) {
+            pfpTokenBox.classList.add("visible");
+        }
     });
+}
 
-document
-    .getElementById("pfpNo")
-    .addEventListener("change", () => {
 
-        document
-            .getElementById("pfpTokenBox")
-            .classList.remove("visible");
+if (pfpNo) {
+    pfpNo.addEventListener("change", () => {
+        if (pfpTokenBox) {
+            pfpTokenBox.classList.remove("visible");
+        }
     });
+}
 
 
+// ================================
 // SUBMIT TO SUPABASE
+// ================================
 
 async function finishForm() {
+    if (isSubmitting) {
+        return;
+    }
+
     if (!validateCurrentPage()) {
         return;
     }
 
     const form = document.getElementById("orisimulForm");
 
+    if (!form) {
+        console.error("Orisimul form not found.");
+        alert(
+            "something went wrong with the form :("
+        );
+        return;
+    }
+
     const formData = new FormData(form);
 
-    // Convert the HTML form names into the database column names.
     const application = {
         name: formData.get("name") || "",
         discord: formData.get("discord") || "",
 
-        introduction: formData.get("introduction") || "",
-        about: formData.get("about") || "",
-        interests: formData.get("interests") || "",
-        talents: formData.get("talents") || "",
+        introduction:
+            formData.get("introduction") || "",
 
-        why_orisimul: formData.get("why-orisimul") || "",
-        projects: formData.get("projects") || "",
-        learn_try: formData.get("learn") || "",
-        wont_help_with: formData.get("dont-want") || "",
+        about:
+            formData.get("about") || "",
 
-        wants_profile: formData.get("profile") || "",
+        interests:
+            formData.get("interests") || "",
+
+        talents:
+            formData.get("talents") || "",
+
+        why_orisimul:
+            formData.get("why-orisimul") || "",
+
+        projects:
+            formData.get("projects") || "",
+
+        learn_try:
+            formData.get("learn") || "",
+
+        wont_help_with:
+            formData.get("dont-want") || "",
+
+        wants_profile:
+            formData.get("profile") || "",
+
         profile_username:
             formData.get("profile-username") || "",
+
         profile_display_name:
             formData.get("profile-display-name") || "",
+
         profile_about:
             formData.get("profile-about") || "",
+
         profile_interests:
             formData.get("profile-interests") || "",
+
         profile_skills:
             formData.get("profile-skills") || "",
+
         profile_extra:
             formData.get("profile-extra") || "",
+
         profile_picture:
             formData.get("pfp") || "",
 
         availability:
             formData.get("availability") || "",
+
         comfort_unknown_people:
             formData.get("social") || "",
+
         communication:
             formData.get("communication") || "",
+
         group_easier:
             formData.get("teamwork-easier") || "",
+
         group_difficult:
             formData.get("teamwork-difficult") || "",
+
         understands_non_commercial:
             formData.get("understand") || "",
 
@@ -207,9 +279,20 @@ async function finishForm() {
 
         questions:
             formData.get("questions") || "",
+
         anything_else:
             formData.get("extra") || ""
     };
+
+    isSubmitting = true;
+
+    const submitButton =
+        form.querySelector(".submit");
+
+    if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = "SENDING...";
+    }
 
     try {
         const response = await fetch(
@@ -225,12 +308,14 @@ async function finishForm() {
             }
         );
 
-        if (!response.ok) {
-            const errorText = await response.text();
+        const responseText =
+            await response.text();
 
+        if (!response.ok) {
             console.error(
-                "Supabase submission error:",
-                errorText
+                "Supabase submission failed:",
+                response.status,
+                responseText
             );
 
             throw new Error(
@@ -238,20 +323,30 @@ async function finishForm() {
             );
         }
 
+        console.log(
+            "Orisimul application submitted successfully."
+        );
+
         // Hide all form pages
         document.querySelectorAll(".page").forEach((page) => {
             page.classList.remove("active");
         });
 
-        // Hide progress bar
-        document
-            .querySelector(".progress-area")
-            .style.display = "none";
+        // Hide progress area
+        const progressArea =
+            document.querySelector(".progress-area");
+
+        if (progressArea) {
+            progressArea.style.display = "none";
+        }
 
         // Show thank-you screen
-        document
-            .getElementById("thankYou")
-            .classList.add("active");
+        const thankYou =
+            document.getElementById("thankYou");
+
+        if (thankYou) {
+            thankYou.classList.add("active");
+        }
 
         window.scrollTo({
             top: 0,
@@ -259,13 +354,27 @@ async function finishForm() {
         });
 
     } catch (error) {
-        console.error(error);
+        console.error(
+            "Orisimul application error:",
+            error
+        );
 
         alert(
             "something went wrong while sending your application :("
         );
+
+        isSubmitting = false;
+
+        if (submitButton) {
+            submitButton.disabled = false;
+            submitButton.textContent = "FINISH!!!";
+        }
     }
 }
 
+
+// ================================
+// START
+// ================================
+
 showPage(currentPage);
-```
