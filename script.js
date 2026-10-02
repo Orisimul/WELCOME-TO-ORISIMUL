@@ -12,7 +12,7 @@ let isSubmitting = false;
 // ================================
 
 function showPage(page) {
-    document.querySelectorAll(".page").forEach((p) => {
+    document.querySelectorAll(".page").forEach(function (p) {
         p.classList.remove("active");
     });
 
@@ -26,14 +26,9 @@ function showPage(page) {
 
     const percent = Math.round((page / totalPages) * 100);
 
-    const progressBar =
-        document.getElementById("progressBar");
-
-    const progressPercent =
-        document.getElementById("progressPercent");
-
-    const progressText =
-        document.getElementById("progressText");
+    const progressBar = document.getElementById("progressBar");
+    const progressPercent = document.getElementById("progressPercent");
+    const progressText = document.getElementById("progressText");
 
     if (progressBar) {
         progressBar.style.width = percent + "%";
@@ -55,28 +50,20 @@ function showPage(page) {
 }
 
 
-// ================================
-// VALIDATION
-// ================================
-
 function validateCurrentPage() {
     const page = document.querySelector(
         '.page[data-page="' + currentPage + '"]'
     );
 
     if (!page) {
-        console.error(
-            "Could not find page " + currentPage
-        );
-
         return false;
     }
 
-    const requiredFields = page.querySelectorAll(
+    const fields = page.querySelectorAll(
         "input[required], textarea[required], select[required]"
     );
 
-    for (const field of requiredFields) {
+    for (const field of fields) {
         if (!field.checkValidity()) {
             field.reportValidity();
             return false;
@@ -86,10 +73,6 @@ function validateCurrentPage() {
     return true;
 }
 
-
-// ================================
-// NEXT / BACK
-// ================================
 
 function nextPage() {
     if (!validateCurrentPage()) {
@@ -116,35 +99,30 @@ function prevPage() {
 // ================================
 
 function setupProfile() {
-    const profileInputs =
-        document.querySelectorAll('input[name="profile"]');
+    const inputs = document.querySelectorAll(
+        'input[name="profile"]'
+    );
 
-    const profileFields =
-        document.getElementById("profileFields");
+    const fields = document.getElementById("profileFields");
+    const tokenBox = document.getElementById("pfpTokenBox");
 
-    const pfpTokenBox =
-        document.getElementById("pfpTokenBox");
-
-    profileInputs.forEach((input) => {
-        input.addEventListener("change", () => {
+    inputs.forEach(function (input) {
+        input.addEventListener("change", function () {
 
             if (
                 input.value === "yes" ||
                 input.value === "maybe"
             ) {
-
-                if (profileFields) {
-                    profileFields.classList.add("visible");
+                if (fields) {
+                    fields.classList.add("visible");
                 }
-
             } else {
-
-                if (profileFields) {
-                    profileFields.classList.remove("visible");
+                if (fields) {
+                    fields.classList.remove("visible");
                 }
 
-                if (pfpTokenBox) {
-                    pfpTokenBox.classList.remove("visible");
+                if (tokenBox) {
+                    tokenBox.classList.remove("visible");
                 }
             }
         });
@@ -163,11 +141,9 @@ function generatePfpToken() {
     let token = "OR-";
 
     for (let i = 0; i < 5; i++) {
-        token += characters[
-            Math.floor(
-                Math.random() * characters.length
-            )
-        ];
+        token += characters.charAt(
+            Math.floor(Math.random() * characters.length)
+        );
     }
 
     return token;
@@ -175,37 +151,27 @@ function generatePfpToken() {
 
 
 function setupPfp() {
-    const pfpYes =
-        document.getElementById("pfpYes");
+    const yes = document.getElementById("pfpYes");
+    const no = document.getElementById("pfpNo");
+    const token = document.getElementById("pfpToken");
+    const box = document.getElementById("pfpTokenBox");
 
-    const pfpNo =
-        document.getElementById("pfpNo");
-
-    const pfpToken =
-        document.getElementById("pfpToken");
-
-    const pfpTokenBox =
-        document.getElementById("pfpTokenBox");
-
-    if (pfpYes) {
-        pfpYes.addEventListener("change", () => {
-
-            if (pfpToken) {
-                pfpToken.textContent =
-                    generatePfpToken();
+    if (yes) {
+        yes.addEventListener("change", function () {
+            if (token) {
+                token.textContent = generatePfpToken();
             }
 
-            if (pfpTokenBox) {
-                pfpTokenBox.classList.add("visible");
+            if (box) {
+                box.classList.add("visible");
             }
         });
     }
 
-    if (pfpNo) {
-        pfpNo.addEventListener("change", () => {
-
-            if (pfpTokenBox) {
-                pfpTokenBox.classList.remove("visible");
+    if (no) {
+        no.addEventListener("change", function () {
+            if (box) {
+                box.classList.remove("visible");
             }
         });
     }
@@ -213,11 +179,10 @@ function setupPfp() {
 
 
 // ================================
-// SUBMIT TO SUPABASE
+// SUBMIT
 // ================================
 
 async function finishForm() {
-
     if (isSubmitting) {
         return;
     }
@@ -226,143 +191,69 @@ async function finishForm() {
         return;
     }
 
-    const form =
-        document.getElementById("orisimulForm");
+    const form = document.getElementById("orisimulForm");
 
     if (!form) {
-        console.error(
-            "ERROR: #orisimulForm does not exist."
-        );
-
-        alert(
-            "something went wrong with the form :("
-        );
-
+        alert("something went wrong with the form :(");
         return;
     }
 
-    const formData =
-        new FormData(form);
+    const data = new FormData(form);
 
     const application = {
-        name:
-            formData.get("name") || "",
-
-        discord:
-            formData.get("discord") || "",
-
-        introduction:
-            formData.get("introduction") || "",
-
-        about:
-            formData.get("about") || "",
-
-        interests:
-            formData.get("interests") || "",
-
-        talents:
-            formData.get("talents") || "",
-
-        why_orisimul:
-            formData.get("why-orisimul") || "",
-
-        projects:
-            formData.get("projects") || "",
-
-        learn_try:
-            formData.get("learn") || "",
-
-        teamwork:
-            formData.get("teamwork") || "",
-
-        wont_help_with:
-            formData.get("dont-want") || "",
-
-        wants_profile:
-            formData.get("profile") || "",
-
-        profile_username:
-            formData.get("profile-username") || "",
-
-        profile_display_name:
-            formData.get("profile-display-name") || "",
-
-        profile_about:
-            formData.get("profile-about") || "",
-
-        profile_interests:
-            formData.get("profile-interests") || "",
-
-        profile_skills:
-            formData.get("profile-skills") || "",
-
-        profile_extra:
-            formData.get("profile-extra") || "",
-
-        profile_picture:
-            formData.get("pfp") || "",
-
-        availability:
-            formData.get("availability") || "",
-
-        comfort_unknown_people:
-            formData.get("social") || "",
-
-        communication:
-            formData.get("communication") || "",
-
-        group_easier:
-            formData.get("teamwork-easier") || "",
-
-        group_difficult:
-            formData.get("teamwork-difficult") || "",
-
-        understands_non_commercial:
-            formData.get("understand") || "",
-
-        support:
-            formData.get("support") || "",
-
-        questions:
-            formData.get("questions") || "",
-
-        anything_else:
-            formData.get("extra") || ""
+        name: data.get("name") || "",
+        discord: data.get("discord") || "",
+        introduction: data.get("introduction") || "",
+        about: data.get("about") || "",
+        interests: data.get("interests") || "",
+        talents: data.get("talents") || "",
+        why_orisimul: data.get("why-orisimul") || "",
+        projects: data.get("projects") || "",
+        learn_try: data.get("learn") || "",
+        teamwork: data.get("teamwork") || "",
+        wont_help_with: data.get("dont-want") || "",
+        wants_profile: data.get("profile") || "",
+        profile_username: data.get("profile-username") || "",
+        profile_display_name: data.get("profile-display-name") || "",
+        profile_about: data.get("profile-about") || "",
+        profile_interests: data.get("profile-interests") || "",
+        profile_skills: data.get("profile-skills") || "",
+        profile_extra: data.get("profile-extra") || "",
+        profile_picture: data.get("pfp") || "",
+        availability: data.get("availability") || "",
+        comfort_unknown_people: data.get("social") || "",
+        communication: data.get("communication") || "",
+        group_easier: data.get("teamwork-easier") || "",
+        group_difficult: data.get("teamwork-difficult") || "",
+        understands_non_commercial: data.get("understand") || "",
+        support: data.get("support") || "",
+        questions: data.get("questions") || "",
+        anything_else: data.get("extra") || ""
     };
-
-    console.log(
-        "Submitting Orisimul application:",
-        application
-    );
 
     isSubmitting = true;
 
-    const submitButton =
-        form.querySelector(".submit");
+    const button = form.querySelector(".submit");
 
-    if (submitButton) {
-        submitButton.disabled = true;
-        submitButton.textContent = "SENDING...";
+    if (button) {
+        button.disabled = true;
+        button.textContent = "SENDING...";
     }
 
     try {
-
         const response = await fetch(
             SUPABASE_FUNCTION_URL,
             {
                 method: "POST",
-
                 headers: {
                     "Content-Type": "application/json",
                     "Accept": "application/json"
                 },
-
                 body: JSON.stringify(application)
             }
         );
 
-        const responseText =
-            await response.text();
+        const responseText = await response.text();
 
         console.log(
             "Supabase response:",
@@ -379,25 +270,21 @@ async function finishForm() {
             );
         }
 
-        console.log(
-            "Orisimul application submitted successfully."
+        document.querySelectorAll(".page").forEach(
+            function (page) {
+                page.classList.remove("active");
+            }
         );
 
-        document
-            .querySelectorAll(".page")
-            .forEach((page) => {
-                page.classList.remove("active");
-            });
+        const progress = document.querySelector(
+            ".progress-area"
+        );
 
-        const progressArea =
-            document.querySelector(".progress-area");
-
-        if (progressArea) {
-            progressArea.style.display = "none";
+        if (progress) {
+            progress.style.display = "none";
         }
 
-        const thankYou =
-            document.getElementById("thankYou");
+        const thankYou = document.getElementById("thankYou");
 
         if (thankYou) {
             thankYou.classList.add("active");
@@ -409,22 +296,20 @@ async function finishForm() {
         });
 
     } catch (error) {
-
         console.error(
             "ORISIMUL SUBMISSION ERROR:",
             error
         );
 
         alert(
-            "something went wrong while sending your application :(\n\n" +
-            "Check the browser console for the exact error."
+            "something went wrong while sending your application :("
         );
 
         isSubmitting = false;
 
-        if (submitButton) {
-            submitButton.disabled = false;
-            submitButton.textContent = "FINISH!!!";
+        if (button) {
+            button.disabled = false;
+            button.textContent = "FINISH!!!";
         }
     }
 }
@@ -434,17 +319,10 @@ async function finishForm() {
 // START
 // ================================
 
-document.addEventListener(
-    "DOMContentLoaded",
-    () => {
+document.addEventListener("DOMContentLoaded", function () {
+    setupProfile();
+    setupPfp();
+    showPage(currentPage);
 
-        console.log(
-            "Orisimul form loaded."
-        );
-
-        setupProfile();
-        setupPfp();
-        showPage(currentPage);
-
-    }
-);
+    console.log("Orisimul form loaded successfully.");
+});
