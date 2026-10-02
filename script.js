@@ -1,4 +1,3 @@
-```javascript
 let currentPage = 1;
 const totalPages = 5;
 
@@ -27,14 +26,9 @@ function showPage(page) {
 
     const percent = Math.round((page / totalPages) * 100);
 
-    const progressBar =
-        document.getElementById("progressBar");
-
-    const progressPercent =
-        document.getElementById("progressPercent");
-
-    const progressText =
-        document.getElementById("progressText");
+    const progressBar = document.getElementById("progressBar");
+    const progressPercent = document.getElementById("progressPercent");
+    const progressText = document.getElementById("progressText");
 
     if (progressBar) {
         progressBar.style.width = percent + "%";
@@ -148,9 +142,7 @@ function generatePfpToken() {
 
     for (let i = 0; i < 5; i++) {
         token += characters[
-            Math.floor(
-                Math.random() * characters.length
-            )
+            Math.floor(Math.random() * characters.length)
         ];
     }
 
@@ -235,7 +227,6 @@ async function finishForm() {
         discord:
             formData.get("discord") || "",
 
-
         introduction:
             formData.get("introduction") || "",
 
@@ -248,12 +239,8 @@ async function finishForm() {
         talents:
             formData.get("talents") || "",
 
-
-        // Kept for compatibility with
-        // the existing database column.
         why_orisimul:
             formData.get("why-orisimul") || "",
-
 
         projects:
             formData.get("projects") || "",
@@ -266,7 +253,6 @@ async function finishForm() {
 
         wont_help_with:
             formData.get("dont-want") || "",
-
 
         wants_profile:
             formData.get("profile") || "",
@@ -292,7 +278,6 @@ async function finishForm() {
         profile_picture:
             formData.get("pfp") || "",
 
-
         availability:
             formData.get("availability") || "",
 
@@ -311,7 +296,6 @@ async function finishForm() {
         understands_non_commercial:
             formData.get("understand") || "",
 
-
         support:
             formData.get("support") || "",
 
@@ -325,10 +309,8 @@ async function finishForm() {
 
     isSubmitting = true;
 
-
     const submitButton =
         form.querySelector(".submit");
-
 
     if (submitButton) {
         submitButton.disabled = true;
@@ -435,4 +417,3 @@ async function finishForm() {
 // ================================
 
 showPage(currentPage);
-```
