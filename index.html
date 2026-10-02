@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orisimul™ — welcome :D</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <div class="logo">Orisimul<sup>™</sup></div>
+        <div class="subtitle">welcome :D</div>
+    </div>
+
+    <div class="progress-area">
+        <div class="progress-top">
+            <span id="progressText">section 1 of 5</span>
+            <span id="progressPercent">20%</span>
+        </div>
+
+        <div class="progress">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+    </div>
+
+
+    <div class="page active" data-page="1">
+
+        <div class="card">
+
+            <div class="section-title">hi :D</div>
+
+            <div class="section-intro">
+                welcome to Orisimul™!
+                <br><br>
+
+                huge thanks to XCC for the new name :D<br>
+                They came up with Orisimul Choir, which eventually became just
+                <strong>Orisimul</strong>.
+                <br>
+                so yeah, thank you XCC :)
+            </div>
+
+            <div class="question">
+                <label>whats your name? <span class="required">*</span></label>
+                <input type="text" required>
+            </div>
+
+            <div class="question">
+                <label>what is your discord user? <span class="required">*</span></label>
+                <input type="text" required>
+            </div>
+
+            <div class="question">
+                <label>who are you? introduce yourself</label>
+                <textarea></textarea>
+            </div>
+
+            <div class="question">
+                <label>tell us a little bit about yourself.</label>
+                <div class="description">
+                    (Your hobbies, interests, things you enjoy, or anything you want us to know.)
+                </div>
+                <textarea></textarea>
+            </div>
+
+            <div class="question">
+                <label>what are some things you're interested in making, learning, or doing?</label>
+                <textarea></textarea>
+            </div>
+
+            <div class="question">
+                <label>any hidden talents?</label>
+                <input type="text">
+            </div>
+
+            <div class="navigation">
+                <button class="next" type="button" onclick="nextPage()">
+                    NEXT →
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="page" data-page="2">
+
+        <div class="card">
+
+            <div class="section-title">ORISIMUL QUESTIONS</div>
+
+            <div class="section-intro">
+                just a few things so we know what you actually want to do here :)
+            </div>
+
+            <div class="question">
+                <label>
+                    what made you want to be part of Orisimul™?
+                    <span class="required">*</span>
+                </label>
+                <textarea required></textarea>
+            </div>
+
+            <div class="question">
+                <label>
+                    what kind of projects would you like to help with?
+                    <span class="required">*</span>
+                </label>
+                <textarea required></textarea>
+            </div>
+
+            <div class="question">
+                <label>is there anything you'd like to learn or try?</label>
+                <textarea></textarea>
+            </div>
+
+            <div class="question">
+                <label>is there anything you wouldn't want to help with?</label>
+                <textarea></textarea>
+            </div>
+
+            <div class="navigation">
+                <button class="back" type="button" onclick="prevPage()">
+                    ← BACK
+                </button>
+
+                <button class="next" type="button" onclick="nextPage()">
+                    NEXT →
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="page" data-page="3">
+
+        <div class="card">
+
+            <div class="section-title">future stuff</div>
+
+            <div class="section-intro">
+
+                At some point in the future, Orisimul™ might have a website
+                or something similar where you can see the projects we're
+                working on, see what everyone is up to, and learn a little
+                about the people involved.
+
+                <br><br>
+
+                This wouldn't be a commercial thing or anything like that —
+                just somewhere for Orisimul™ to exist outside of Discord.
+
+            </div>
+
+            <div class="question">
+
+                <label>
+                    would you like to have a profile on an Orisimul™ website?
+                    <span class="required">*</span>
+                </label>
+
+                <div class="options">
+
+                    <label class="option">
+                        <input type="radio" name="profile" value="yes">
+                        <span>Yes</span>
+                    </label>
+
+                    <label class="option">
+                        <input type="radio" name="profile" value="no">
+                        <span>No</span>
+                    </label>
+
+                    <label class="option">
+                        <input type="radio" name="profile" value="maybe">
+                        <span>Maybe</span>
+                    </label>
+
+                </div>
+
+            </div>
+
+            <div class="conditional" id="profileFields">
+
+                <div class="question">
+                    <label>what username would you like?</label>
+                    <input type="text">
+                </div>
+
+                <div class="question">
+                    <label>what name would you like people to see?</label>
+                    <input type="text">
+                </div>
+
+                <div class="question">
+                    <label>tell us a little about yourself for your profile.</label>
+                    <textarea></textarea>
+                </div>
+
+                <div class="question">
+                    <label>what are your interests?</label>
+                    <textarea></textarea>
+                </div>
+
+                <div class="question">
+                    <label>what are you good at / enjoy doing?</label>
+                    <textarea></textarea>
+                </div>
+
+                <div class="question">
+                    <label>is there anything else you'd like shown on your profile?</label>
+                    <textarea></textarea>
+                </div>
+
+                <div class="question">
+
+                    <label>would you want a profile picture?</label>
+
+                    <div class="options">
+
+                        <label class="option">
+                            <input type="radio" name="pfp" value="yes" id="pfpYes">
+                            <span>Yes</span>
+                        </label>
+
+                        <label class="option">
+                            <input type="radio" name="pfp" value="no" id="pfpNo">
+                            <span>No</span>
+                        </label>
+
+                    </div>
+
+                    <div class="token-box" id="pfpTokenBox">
+
+                        <div class="token-label">
+                            YOUR PFP TOKEN
+                        </div>
+
+                        <div class="token" id="pfpToken">
+                            OR-?????
+                        </div>
+
+                        <div class="token-note">
+                            this token doesn't really mean anything lol<br>
+                            DM H4RAN this token along with the profile picture
+                            you want to use :)
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="navigation">
+
+                <button class="back" type="button" onclick="prevPage()">
+                    ← BACK
+                </button>
+
+                <button class="next" type="button" onclick="nextPage()">
+                    NEXT →
+                </button>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="page" data-page="4">
+
+        <div class="card">
+
+            <div class="section-title">ALMOST DONE!!!</div>
+
+            <div class="section-intro">
+                last few things. then you're free. probably.
+            </div>
+
+            <div class="question">
+
+                <label>
+                    is there anything I should know that would help me
+                    support you while working with Orisimul™?
+                </label>
+
+                <div class="description">
+                    (For example: needing breaks, communication preferences,
+                    things that make teamwork easier for you.)
+                </div>
+
+                <textarea></textarea>
+
+            </div>
+
+            <div class="question">
+
+                <label>rate your availability</label>
+
+                <div class="scale">
+
+                    <label>
+                        <input type="radio" name="availability" value="1">
+                        <span>1</span>
+                    </label>
+
+                    <label>
+                        <input type="radio" name="availability" value="2">
+                        <span>2</span>
+                    </label>
+
+                    <label>
+                        <input type="radio" name="availability" value="3">
+                        <span>3</span>
+                    </label>
+
+                    <label>
+                        <input type="radio" name="availability" value="4">
+                        <span>4</span>
+                    </label>
+
+                    <label>
+                        <input type="radio" name="availability" value="5">
+                        <span>5</span>
+                    </label>
+
+                </div>
+
+            </div>
+
+            <div class="question">
+
+                <label>
+                    how comfortable are you talking to people you don't know?
+                </label>
+
+                <div class="scale">
+
+                    <label>
+                        <input type="radio" name="social" value="1">
+                        <span>1</span>
+                    </label>
+
+                    <label>
+                        <input type="radio" name="social" value="2">
+                        <span>2</span>
+                    </label>
+
+                    <label>
+                        <input type="radio" name="social" value="3">
+                        <span>3</span>
+                    </label>
+
+                    <label>
+                        <input type="radio" name="social" value="4">
+                        <span>4</span>
+                    </label>
+
+                    <label>
+                        <input type="radio" name="social" value="5">
+                        <span>5</span>
+                    </label>
+
+                </div>
+
+            </div>
+
+            <div class="question">
+
+                <label>how do you prefer to communicate?</label>
+
+                <div class="options">
+
+                    <label class="option">
+                        <input type="radio" name="communication" value="text">
+                        <span>text</span>
+                    </label>
+
+                    <label class="option">
+                        <input type="radio" name="communication" value="voice">
+                        <span>voice</span>
+                    </label>
+
+                    <label class="option">
+                        <input type="radio" name="communication" value="both">
+                        <span>both</span>
+                    </label>
+
+                    <label class="option">
+                        <input type="radio" name="communication" value="depends">
+                        <span>depends</span>
+                    </label>
+
+                </div>
+
+            </div>
+
+            <div class="question">
+
+                <label>
+                    is there anything that makes working with other people
+                    easier for you?
+                </label>
+
+                <textarea></textarea>
+
+            </div>
+
+            <div class="question">
+
+                <label>
+                    is there anything that makes group work difficult or
+                    uncomfortable for you?
+                </label>
+
+                <textarea></textarea>
+
+            </div>
+
+            <div class="question">
+
+                <label>
+                    do you understand that Orisimul™ is a passion
+                    project/community made for fun, and isn't being created
+                    as a commercial business?
+                </label>
+
+                <div class="options">
+
+                    <label class="option">
+                        <input type="radio" name="understand" value="yes">
+                        <span>yes</span>
+                    </label>
+
+                    <label class="option">
+                        <input type="radio" name="understand" value="no">
+                        <span>no</span>
+                    </label>
+
+                </div>
+
+            </div>
+
+            <div class="navigation">
+
+                <button class="back" type="button" onclick="prevPage()">
+                    ← BACK
+                </button>
+
+                <button class="next" type="button" onclick="nextPage()">
+                    NEXT →
+                </button>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="page" data-page="5">
+
+        <div class="card">
+
+            <div class="section-title">YOU'RE DONE!!!</div>
+
+            <div class="section-intro">
+                seriously. that's it. no more questions. :D
+            </div>
+
+            <div class="question">
+
+                <label>do you have any questions of your own?</label>
+
+                <textarea></textarea>
+
+            </div>
+
+            <div class="question">
+
+                <label>anything else you want to add :)</label>
+
+                <textarea></textarea>
+
+            </div>
+
+            <div class="navigation">
+
+                <button class="back" type="button" onclick="prevPage()">
+                    ← BACK
+                </button>
+
+                <button class="submit" type="button" onclick="finishForm()">
+                    FINISH!!!
+                </button>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="card thank-you" id="thankYou">
+
+        <div class="star">✦</div>
+
+        <h1>YOU'RE IN.</h1>
+
+        <h2>welcome to Orisimul™ :D</h2>
+
+        <p>
+            thanks for taking the time to fill this out.
+            your answers have been noted and you'll be DMED
+            when there's an update.
+        </p>
+
+        <div class="welcome-box">
+            <strong>ORISIMUL™</strong>
+            <br><br>
+            this is just the beginning.
+        </div>
+
+    </div>
+
+
+    <footer class="footer">
+        <strong>ORISIMUL™</strong>
+        <span>made together, just for fun.</span>
+    </footer>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
