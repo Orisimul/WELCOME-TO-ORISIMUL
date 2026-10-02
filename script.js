@@ -135,51 +135,56 @@ document
             .classList.remove("visible");
     });
 
-    async function finishForm() {
-        if (!validateCurrentPage()) {
-            return;
-        }
-    
-        const form = document.getElementById("orisimulForm");
-        const formData = new FormData(form);
-    
-        try {
-            const response = await fetch("/", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/x-www-form-urlencoded"
-                },
-                body: new URLSearchParams(formData).toString()
-            });
-    
-            if (!response.ok) {
-                throw new Error("Submission failed");
-            }
-    
-            document.querySelectorAll(".page").forEach((page) => {
-                page.classList.remove("active");
-            });
-    
-            document
-                .querySelector(".progress-area")
-                .style.display = "none";
-    
-            document
-                .getElementById("thankYou")
-                .classList.add("active");
-    
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
-    
-        } catch (error) {
-            console.error(error);
-    
-            alert(
-                "something went wrong while sending your application :("
+async function finishForm() {
+    if (!validateCurrentPage()) {
+        return;
+    }
+
+    const form = document.getElementById("orisimulForm");
+    const formData = new FormData(form);
+
+    // Make absolutely sure Netlify knows which form this is
+    formData.set("form-name", "orisimul-application");
+
+    try {
+        const response = await fetch("/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: new URLSearchParams(formData).toString()
+        });
+
+        if (!response.ok) {
+            throw new Error(
+                `Submission failed: ${response.status}`
             );
         }
+
+        document.querySelectorAll(".page").forEach((page) => {
+            page.classList.remove("active");
+        });
+
+        document
+            .querySelector(".progress-area")
+            .style.display = "none";
+
+        document
+            .getElementById("thankYou")
+            .classList.add("active");
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    } catch (error) {
+        console.error(error);
+
+        alert(
+            "something went wrong while sending your application :("
+        );
     }
-    
-    showPage(currentPage);
+}
+
+showPage(currentPage);
