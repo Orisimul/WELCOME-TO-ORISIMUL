@@ -18,7 +18,7 @@ function showPage(page) {
     });
 
     const selected = document.querySelector(
-        '.page[data-page="' + page + '"]'
+        `.page[data-page="${page}"]`
     );
 
     if (selected) {
@@ -37,16 +37,16 @@ function showPage(page) {
         document.getElementById("progressText");
 
     if (progressBar) {
-        progressBar.style.width = percent + "%";
+        progressBar.style.width = `${percent}%`;
     }
 
     if (progressPercent) {
-        progressPercent.textContent = percent + "%";
+        progressPercent.textContent = `${percent}%`;
     }
 
     if (progressText) {
         progressText.textContent =
-            "section " + page + " of " + totalPages;
+            `section ${page} of ${totalPages}`;
     }
 
     window.scrollTo({
@@ -62,11 +62,15 @@ function showPage(page) {
 
 function validateCurrentPage() {
     const page = document.querySelector(
-        '.page[data-page="' + currentPage + '"]'
+        `.page[data-page="${currentPage}"]`
     );
 
     if (!page) {
-        return true;
+        console.error(
+            `Could not find page ${currentPage}`
+        );
+
+        return false;
     }
 
     const requiredFields = page.querySelectorAll(
@@ -85,7 +89,7 @@ function validateCurrentPage() {
 
 
 // ================================
-// NEXT / PREVIOUS
+// NEXT / BACK
 // ================================
 
 function nextPage() {
@@ -109,37 +113,40 @@ function prevPage() {
 
 
 // ================================
-// PROFILE FIELDS
+// PROFILE
 // ================================
 
-function setupProfileFields() {
+function setupProfile() {
     const profileInputs =
         document.querySelectorAll('input[name="profile"]');
 
+    const profileFields =
+        document.getElementById("profileFields");
+
+    const pfpTokenBox =
+        document.getElementById("pfpTokenBox");
+
+
     profileInputs.forEach((input) => {
         input.addEventListener("change", () => {
-            const profileFields =
-                document.getElementById("profileFields");
-
-            const pfpTokenBox =
-                document.getElementById("pfpTokenBox");
-
-            if (!profileFields) {
-                return;
-            }
 
             if (
                 input.value === "yes" ||
                 input.value === "maybe"
             ) {
-                profileFields.classList.add("visible");
+                if (profileFields) {
+                    profileFields.classList.add("visible");
+                }
             } else {
-                profileFields.classList.remove("visible");
+                if (profileFields) {
+                    profileFields.classList.remove("visible");
+                }
 
                 if (pfpTokenBox) {
                     pfpTokenBox.classList.remove("visible");
                 }
             }
+
         });
     });
 }
@@ -157,7 +164,9 @@ function generatePfpToken() {
 
     for (let i = 0; i < 5; i++) {
         token += characters[
-            Math.floor(Math.random() * characters.length)
+            Math.floor(
+                Math.random() * characters.length
+            )
         ];
     }
 
@@ -165,7 +174,7 @@ function generatePfpToken() {
 }
 
 
-function setupPfpFields() {
+function setupPfp() {
     const pfpYes =
         document.getElementById("pfpYes");
 
@@ -181,6 +190,7 @@ function setupPfpFields() {
 
     if (pfpYes) {
         pfpYes.addEventListener("change", () => {
+
             if (pfpToken) {
                 pfpToken.textContent =
                     generatePfpToken();
@@ -189,25 +199,29 @@ function setupPfpFields() {
             if (pfpTokenBox) {
                 pfpTokenBox.classList.add("visible");
             }
+
         });
     }
 
 
     if (pfpNo) {
         pfpNo.addEventListener("change", () => {
+
             if (pfpTokenBox) {
                 pfpTokenBox.classList.remove("visible");
             }
+
         });
     }
 }
 
 
 // ================================
-// SUBMIT TO SUPABASE
+// SUBMIT
 // ================================
 
 async function finishForm() {
+
     if (isSubmitting) {
         return;
     }
@@ -220,7 +234,9 @@ async function finishForm() {
         document.getElementById("orisimulForm");
 
     if (!form) {
-        console.error("Orisimul form not found.");
+        console.error(
+            "ERROR: #orisimulForm does not exist."
+        );
 
         alert(
             "something went wrong with the form :("
@@ -235,6 +251,7 @@ async function finishForm() {
 
 
     const application = {
+
         name:
             formData.get("name") || "",
 
@@ -321,6 +338,12 @@ async function finishForm() {
     };
 
 
+    console.log(
+        "Submitting Orisimul application:",
+        application
+    );
+
+
     isSubmitting = true;
 
 
@@ -335,13 +358,15 @@ async function finishForm() {
 
 
     try {
+
         const response = await fetch(
             SUPABASE_FUNCTION_URL,
             {
                 method: "POST",
 
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
                 },
 
                 body: JSON.stringify(application)
@@ -353,16 +378,19 @@ async function finishForm() {
             await response.text();
 
 
+        console.log(
+            "Supabase response:",
+            response.status,
+            responseText
+        );
+
+
         if (!response.ok) {
-            console.error(
-                "Supabase submission failed:",
-                response.status,
-                responseText
-            );
 
             throw new Error(
-                `Submission failed: ${response.status}`
+                `Supabase returned ${response.status}: ${responseText}`
             );
+
         }
 
 
@@ -371,7 +399,7 @@ async function finishForm() {
         );
 
 
-        // Hide all form pages
+        // Hide form pages
         document
             .querySelectorAll(".page")
             .forEach((page) => {
@@ -388,12 +416,16 @@ async function finishForm() {
         }
 
 
-        // Show thank-you page
+        // Show thank-you screen
         const thankYou =
             document.getElementById("thankYou");
 
         if (thankYou) {
             thankYou.classList.add("active");
+        } else {
+            console.error(
+                "Thank-you element #thankYou was not found."
+            );
         }
 
 
@@ -402,27 +434,14 @@ async function finishForm() {
             behavior: "smooth"
         });
 
+
     } catch (error) {
+
         console.error(
-            "Orisimul application error:",
+            "ORISIMUL SUBMISSION ERROR:",
             error
         );
 
+
         alert(
-            "something went wrong while sending your application :("
-        );
-
-        isSubmitting = false;
-
-
-        if (submitButton) {
-            submitButton.disabled = false;
-            submitButton.textContent = "FINISH!!!";
-        }
-    }
-}
-
-
-// ================================
-// START
-//
+            "something went wrong while sending your application :(\
