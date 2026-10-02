@@ -1,5 +1,10 @@
+```js
 let currentPage = 1;
 const totalPages = 5;
+
+// Your Supabase Edge Function
+const SUPABASE_FUNCTION_URL =
+    "https://ohypogqvidtdfdndtyyc.supabase.co/functions/v1/hyper-responder";
 
 function showPage(page) {
     document.querySelectorAll(".page").forEach((p) => {
@@ -72,6 +77,9 @@ function prevPage() {
     }
 }
 
+
+// PROFILE FIELDS
+
 document
     .querySelectorAll('input[name="profile"]')
     .forEach((input) => {
@@ -95,6 +103,9 @@ document
             }
         });
     });
+
+
+// PFP TOKEN
 
 function generatePfpToken() {
     const characters =
@@ -135,40 +146,109 @@ document
             .classList.remove("visible");
     });
 
+
+// SUBMIT TO SUPABASE
+
 async function finishForm() {
     if (!validateCurrentPage()) {
         return;
     }
 
     const form = document.getElementById("orisimulForm");
+
     const formData = new FormData(form);
 
-    // Make absolutely sure Netlify knows which form this is
-    formData.set("form-name", "orisimul-application");
+    // Convert the HTML form names into the database column names.
+    const application = {
+        name: formData.get("name") || "",
+        discord: formData.get("discord") || "",
+
+        introduction: formData.get("introduction") || "",
+        about: formData.get("about") || "",
+        interests: formData.get("interests") || "",
+        talents: formData.get("talents") || "",
+
+        why_orisimul: formData.get("why-orisimul") || "",
+        projects: formData.get("projects") || "",
+        learn_try: formData.get("learn") || "",
+        wont_help_with: formData.get("dont-want") || "",
+
+        wants_profile: formData.get("profile") || "",
+        profile_username:
+            formData.get("profile-username") || "",
+        profile_display_name:
+            formData.get("profile-display-name") || "",
+        profile_about:
+            formData.get("profile-about") || "",
+        profile_interests:
+            formData.get("profile-interests") || "",
+        profile_skills:
+            formData.get("profile-skills") || "",
+        profile_extra:
+            formData.get("profile-extra") || "",
+        profile_picture:
+            formData.get("pfp") || "",
+
+        availability:
+            formData.get("availability") || "",
+        comfort_unknown_people:
+            formData.get("social") || "",
+        communication:
+            formData.get("communication") || "",
+        group_easier:
+            formData.get("teamwork-easier") || "",
+        group_difficult:
+            formData.get("teamwork-difficult") || "",
+        understands_non_commercial:
+            formData.get("understand") || "",
+
+        support:
+            formData.get("support") || "",
+
+        questions:
+            formData.get("questions") || "",
+        anything_else:
+            formData.get("extra") || ""
+    };
 
     try {
-        const response = await fetch("/", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded"
-            },
-            body: new URLSearchParams(formData).toString()
-        });
+        const response = await fetch(
+            SUPABASE_FUNCTION_URL,
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify(application)
+            }
+        );
 
         if (!response.ok) {
+            const errorText = await response.text();
+
+            console.error(
+                "Supabase submission error:",
+                errorText
+            );
+
             throw new Error(
                 `Submission failed: ${response.status}`
             );
         }
 
+        // Hide all form pages
         document.querySelectorAll(".page").forEach((page) => {
             page.classList.remove("active");
         });
 
+        // Hide progress bar
         document
             .querySelector(".progress-area")
             .style.display = "none";
 
+        // Show thank-you screen
         document
             .getElementById("thankYou")
             .classList.add("active");
@@ -188,3 +268,4 @@ async function finishForm() {
 }
 
 showPage(currentPage);
+```
