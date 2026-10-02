@@ -17,8 +17,8 @@ function showPage(page) {
     });
 
     const selected = document.querySelector(
-        `.page[data-page="${page}"]`
-    );
+    '.page[data-page="' + page + '"]'
+);
 
     if (selected) {
         selected.classList.add("active");
@@ -40,7 +40,7 @@ function showPage(page) {
 
     if (progressText) {
         progressText.textContent =
-            `section ${page} of ${totalPages}`;
+    "section " + page + " of " + totalPages;
     }
 
     window.scrollTo({
@@ -52,8 +52,8 @@ function showPage(page) {
 
 function validateCurrentPage() {
     const page = document.querySelector(
-        `.page[data-page="${currentPage}"]`
-    );
+    '.page[data-page="' + currentPage + '"]'
+);
 
     if (!page) {
         return true;
