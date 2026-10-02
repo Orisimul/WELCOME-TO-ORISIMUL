@@ -27,9 +27,14 @@ function showPage(page) {
 
     const percent = Math.round((page / totalPages) * 100);
 
-    const progressBar = document.getElementById("progressBar");
-    const progressPercent = document.getElementById("progressPercent");
-    const progressText = document.getElementById("progressText");
+    const progressBar =
+        document.getElementById("progressBar");
+
+    const progressPercent =
+        document.getElementById("progressPercent");
+
+    const progressText =
+        document.getElementById("progressText");
 
     if (progressBar) {
         progressBar.style.width = percent + "%";
@@ -50,6 +55,10 @@ function showPage(page) {
     });
 }
 
+
+// ================================
+// VALIDATION
+// ================================
 
 function validateCurrentPage() {
     const page = document.querySelector(
@@ -75,6 +84,10 @@ function validateCurrentPage() {
 }
 
 
+// ================================
+// NEXT / PREVIOUS
+// ================================
+
 function nextPage() {
     if (!validateCurrentPage()) {
         return;
@@ -99,35 +112,37 @@ function prevPage() {
 // PROFILE FIELDS
 // ================================
 
-const profileInputs =
-    document.querySelectorAll('input[name="profile"]');
+function setupProfileFields() {
+    const profileInputs =
+        document.querySelectorAll('input[name="profile"]');
 
-profileInputs.forEach((input) => {
-    input.addEventListener("change", () => {
-        const profileFields =
-            document.getElementById("profileFields");
+    profileInputs.forEach((input) => {
+        input.addEventListener("change", () => {
+            const profileFields =
+                document.getElementById("profileFields");
 
-        const pfpTokenBox =
-            document.getElementById("pfpTokenBox");
+            const pfpTokenBox =
+                document.getElementById("pfpTokenBox");
 
-        if (!profileFields) {
-            return;
-        }
-
-        if (
-            input.value === "yes" ||
-            input.value === "maybe"
-        ) {
-            profileFields.classList.add("visible");
-        } else {
-            profileFields.classList.remove("visible");
-
-            if (pfpTokenBox) {
-                pfpTokenBox.classList.remove("visible");
+            if (!profileFields) {
+                return;
             }
-        }
+
+            if (
+                input.value === "yes" ||
+                input.value === "maybe"
+            ) {
+                profileFields.classList.add("visible");
+            } else {
+                profileFields.classList.remove("visible");
+
+                if (pfpTokenBox) {
+                    pfpTokenBox.classList.remove("visible");
+                }
+            }
+        });
     });
-});
+}
 
 
 // ================================
@@ -150,39 +165,41 @@ function generatePfpToken() {
 }
 
 
-const pfpYes =
-    document.getElementById("pfpYes");
+function setupPfpFields() {
+    const pfpYes =
+        document.getElementById("pfpYes");
 
-const pfpNo =
-    document.getElementById("pfpNo");
+    const pfpNo =
+        document.getElementById("pfpNo");
 
-const pfpToken =
-    document.getElementById("pfpToken");
+    const pfpToken =
+        document.getElementById("pfpToken");
 
-const pfpTokenBox =
-    document.getElementById("pfpTokenBox");
-
-
-if (pfpYes) {
-    pfpYes.addEventListener("change", () => {
-        if (pfpToken) {
-            pfpToken.textContent =
-                generatePfpToken();
-        }
-
-        if (pfpTokenBox) {
-            pfpTokenBox.classList.add("visible");
-        }
-    });
-}
+    const pfpTokenBox =
+        document.getElementById("pfpTokenBox");
 
 
-if (pfpNo) {
-    pfpNo.addEventListener("change", () => {
-        if (pfpTokenBox) {
-            pfpTokenBox.classList.remove("visible");
-        }
-    });
+    if (pfpYes) {
+        pfpYes.addEventListener("change", () => {
+            if (pfpToken) {
+                pfpToken.textContent =
+                    generatePfpToken();
+            }
+
+            if (pfpTokenBox) {
+                pfpTokenBox.classList.add("visible");
+            }
+        });
+    }
+
+
+    if (pfpNo) {
+        pfpNo.addEventListener("change", () => {
+            if (pfpTokenBox) {
+                pfpTokenBox.classList.remove("visible");
+            }
+        });
+    }
 }
 
 
@@ -212,8 +229,10 @@ async function finishForm() {
         return;
     }
 
+
     const formData =
         new FormData(form);
+
 
     const application = {
         name:
@@ -304,8 +323,10 @@ async function finishForm() {
 
     isSubmitting = true;
 
+
     const submitButton =
         form.querySelector(".submit");
+
 
     if (submitButton) {
         submitButton.disabled = true;
@@ -350,6 +371,7 @@ async function finishForm() {
         );
 
 
+        // Hide all form pages
         document
             .querySelectorAll(".page")
             .forEach((page) => {
@@ -357,6 +379,7 @@ async function finishForm() {
             });
 
 
+        // Hide progress
         const progressArea =
             document.querySelector(".progress-area");
 
@@ -365,6 +388,7 @@ async function finishForm() {
         }
 
 
+        // Show thank-you page
         const thankYou =
             document.getElementById("thankYou");
 
@@ -390,6 +414,7 @@ async function finishForm() {
 
         isSubmitting = false;
 
+
         if (submitButton) {
             submitButton.disabled = false;
             submitButton.textContent = "FINISH!!!";
@@ -400,7 +425,4 @@ async function finishForm() {
 
 // ================================
 // START
-// ================================
-
-showPage(currentPage);
-```
+//
