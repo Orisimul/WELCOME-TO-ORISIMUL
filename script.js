@@ -1,4 +1,3 @@
-
 let currentPage = 1;
 const totalPages = 5;
 
@@ -18,7 +17,7 @@ function showPage(page) {
     });
 
     const selected = document.querySelector(
-        `.page[data-page="${page}"]`
+        '.page[data-page="' + page + '"]'
     );
 
     if (selected) {
@@ -37,16 +36,16 @@ function showPage(page) {
         document.getElementById("progressText");
 
     if (progressBar) {
-        progressBar.style.width = `${percent}%`;
+        progressBar.style.width = percent + "%";
     }
 
     if (progressPercent) {
-        progressPercent.textContent = `${percent}%`;
+        progressPercent.textContent = percent + "%";
     }
 
     if (progressText) {
         progressText.textContent =
-            `section ${page} of ${totalPages}`;
+            "section " + page + " of " + totalPages;
     }
 
     window.scrollTo({
@@ -62,12 +61,12 @@ function showPage(page) {
 
 function validateCurrentPage() {
     const page = document.querySelector(
-        `.page[data-page="${currentPage}"]`
+        '.page[data-page="' + currentPage + '"]'
     );
 
     if (!page) {
         console.error(
-            `Could not find page ${currentPage}`
+            "Could not find page " + currentPage
         );
 
         return false;
@@ -126,7 +125,6 @@ function setupProfile() {
     const pfpTokenBox =
         document.getElementById("pfpTokenBox");
 
-
     profileInputs.forEach((input) => {
         input.addEventListener("change", () => {
 
@@ -134,10 +132,13 @@ function setupProfile() {
                 input.value === "yes" ||
                 input.value === "maybe"
             ) {
+
                 if (profileFields) {
                     profileFields.classList.add("visible");
                 }
+
             } else {
+
                 if (profileFields) {
                     profileFields.classList.remove("visible");
                 }
@@ -146,7 +147,6 @@ function setupProfile() {
                     pfpTokenBox.classList.remove("visible");
                 }
             }
-
         });
     });
 }
@@ -187,7 +187,6 @@ function setupPfp() {
     const pfpTokenBox =
         document.getElementById("pfpTokenBox");
 
-
     if (pfpYes) {
         pfpYes.addEventListener("change", () => {
 
@@ -199,10 +198,8 @@ function setupPfp() {
             if (pfpTokenBox) {
                 pfpTokenBox.classList.add("visible");
             }
-
         });
     }
-
 
     if (pfpNo) {
         pfpNo.addEventListener("change", () => {
@@ -210,14 +207,13 @@ function setupPfp() {
             if (pfpTokenBox) {
                 pfpTokenBox.classList.remove("visible");
             }
-
         });
     }
 }
 
 
 // ================================
-// SUBMIT
+// SUBMIT TO SUPABASE
 // ================================
 
 async function finishForm() {
@@ -245,13 +241,10 @@ async function finishForm() {
         return;
     }
 
-
     const formData =
         new FormData(form);
 
-
     const application = {
-
         name:
             formData.get("name") || "",
 
@@ -337,25 +330,20 @@ async function finishForm() {
             formData.get("extra") || ""
     };
 
-
     console.log(
         "Submitting Orisimul application:",
         application
     );
 
-
     isSubmitting = true;
-
 
     const submitButton =
         form.querySelector(".submit");
-
 
     if (submitButton) {
         submitButton.disabled = true;
         submitButton.textContent = "SENDING...";
     }
-
 
     try {
 
@@ -373,10 +361,8 @@ async function finishForm() {
             }
         );
 
-
         const responseText =
             await response.text();
-
 
         console.log(
             "Supabase response:",
@@ -384,30 +370,25 @@ async function finishForm() {
             responseText
         );
 
-
         if (!response.ok) {
-
             throw new Error(
-                `Supabase returned ${response.status}: ${responseText}`
+                "Supabase returned " +
+                response.status +
+                ": " +
+                responseText
             );
-
         }
-
 
         console.log(
             "Orisimul application submitted successfully."
         );
 
-
-        // Hide form pages
         document
             .querySelectorAll(".page")
             .forEach((page) => {
                 page.classList.remove("active");
             });
 
-
-        // Hide progress
         const progressArea =
             document.querySelector(".progress-area");
 
@@ -415,27 +396,19 @@ async function finishForm() {
             progressArea.style.display = "none";
         }
 
-
-        // Show thank-you screen
         const thankYou =
             document.getElementById("thankYou");
 
         if (thankYou) {
             thankYou.classList.add("active");
-        } else {
-            console.error(
-                "Thank-you element #thankYou was not found."
-            );
         }
-
 
         window.scrollTo({
             top: 0,
             behavior: "smooth"
         });
 
-
-        } catch (error) {
+    } catch (error) {
 
         console.error(
             "ORISIMUL SUBMISSION ERROR:",
@@ -471,7 +444,6 @@ document.addEventListener(
 
         setupProfile();
         setupPfp();
-
         showPage(currentPage);
 
     }
