@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,6 +30,8 @@
         </div>
     </div>
 
+
+    <!-- SECTION 1 -->
 
     <div class="page active" data-page="1">
 
@@ -90,6 +93,8 @@
     </div>
 
 
+    <!-- SECTION 2 -->
+
     <div class="page" data-page="2">
 
         <div class="card">
@@ -100,29 +105,29 @@
                 just a few things so we know what you actually want to do here :)
             </div>
 
-            <div class="question">
-                <label>
-                    what made you want to be part of Orisimul™?
-                    <span class="required">*</span>
-                </label>
-                <textarea name="why-orisimul" required></textarea>
-            </div>
+            <!-- kept for the database / script -->
+            <input type="hidden" name="why-orisimul" value="">
 
             <div class="question">
                 <label>
-                    what kind of projects would you like to help with?
+                    what are you most interested in working on?
                     <span class="required">*</span>
                 </label>
                 <textarea name="projects" required></textarea>
             </div>
 
             <div class="question">
-                <label>is there anything you'd like to learn or try?</label>
+                <label>anything you wanna learn or try?</label>
                 <textarea name="learn"></textarea>
             </div>
 
             <div class="question">
-                <label>is there anything you wouldn't want to help with?</label>
+                <label>how do you like working with other people?</label>
+                <textarea name="teamwork"></textarea>
+            </div>
+
+            <div class="question">
+                <label>anything you wouldn't wanna work on?</label>
                 <textarea name="dont-want"></textarea>
             </div>
 
@@ -140,6 +145,8 @@
     </div>
 
 
+    <!-- SECTION 3 -->
+
     <div class="page" data-page="3">
 
         <div class="card">
@@ -148,22 +155,29 @@
 
             <div class="section-intro">
 
-                At some point in the future, Orisimul™ might have a website
-                or something similar where you can see the projects we're
-                working on, see what everyone is up to, and learn a little
-                about the people involved.
+                we might make an Orisimul™ website or something similar
+                in the future.
 
                 <br><br>
 
-                This wouldn't be a commercial thing or anything like that —
-                just somewhere for Orisimul™ to exist outside of Discord.
+                it could be somewhere to show what we've made,
+                who made it, and who's part of the team.
+
+                <br><br>
+
+                nothing is set in stone yet, so if you don't want a profile
+                or anything like that, that's completely fine :D
+
+                <br><br>
+
+                if you want, you can skip this section.
 
             </div>
 
             <div class="question">
 
                 <label>
-                    would you like to have a profile on an Orisimul™ website?
+                    would you want to have a profile on it?
                     <span class="required">*</span>
                 </label>
 
@@ -204,17 +218,17 @@
             <div class="conditional" id="profileFields">
 
                 <div class="question">
-                    <label>what username would you like?</label>
+                    <label>what username would you want?</label>
                     <input type="text" name="profile-username">
                 </div>
 
                 <div class="question">
-                    <label>what name would you like people to see?</label>
+                    <label>what name would you want people to see?</label>
                     <input type="text" name="profile-display-name">
                 </div>
 
                 <div class="question">
-                    <label>tell us a little about yourself for your profile.</label>
+                    <label>what would you want your profile to say?</label>
                     <textarea name="profile-about"></textarea>
                 </div>
 
@@ -229,7 +243,7 @@
                 </div>
 
                 <div class="question">
-                    <label>is there anything else you'd like shown on your profile?</label>
+                    <label>anything else you'd want shown?</label>
                     <textarea name="profile-extra"></textarea>
                 </div>
 
@@ -299,6 +313,8 @@
     </div>
 
 
+    <!-- SECTION 4 -->
+
     <div class="page" data-page="4">
 
         <div class="card">
@@ -313,12 +329,12 @@
 
                 <label>
                     is there anything I should know that would help me
-                    support you while working with Orisimul™?
+                    support you?
                 </label>
 
                 <div class="description">
-                    (For example: needing breaks, communication preferences,
-                    things that make teamwork easier for you.)
+                    (medical issues, communication preferences, breaks,
+                    things that make teamwork easier, or anything else.)
                 </div>
 
                 <textarea name="support"></textarea>
@@ -327,7 +343,7 @@
 
             <div class="question">
 
-                <label>rate your availability</label>
+                <label>how available are you?</label>
 
                 <div class="scale">
 
@@ -430,8 +446,7 @@
             <div class="question">
 
                 <label>
-                    is there anything that makes working with other people
-                    easier for you?
+                    what makes working with people easier for you?
                 </label>
 
                 <textarea name="teamwork-easier"></textarea>
@@ -441,8 +456,7 @@
             <div class="question">
 
                 <label>
-                    is there anything that makes group work difficult or
-                    uncomfortable for you?
+                    what makes group work difficult for you?
                 </label>
 
                 <textarea name="teamwork-difficult"></textarea>
@@ -453,8 +467,7 @@
 
                 <label>
                     do you understand that Orisimul™ is a passion
-                    project/community made for fun, and isn't being created
-                    as a commercial business?
+                    project made for fun?
                 </label>
 
                 <div class="options">
@@ -496,6 +509,8 @@
         </div>
     </div>
 
+
+    <!-- SECTION 5 -->
 
     <div class="page" data-page="5">
 
@@ -575,3 +590,8 @@
 
 </body>
 </html>
+```
+
+**One important thing:** I added the `how do you like working with other people?` question with `name="teamwork"`, but your current database/backend doesn't have a `teamwork` column. So **don't deploy this exact version yet** if you want that answer saved.
+
+We can either add that column properly, or remove that one question. I’d add the column since it was part of the Deer-style questions.
