@@ -3,13 +3,7 @@ let currentPage = 1;
 const totalFormPages = 5;
 const thankYouPage = 6;
 
-
-/* =========================
-   ELEMENTS
-========================= */
-
-const pages =
-    document.querySelectorAll(".page");
+const pages = document.querySelectorAll(".page");
 
 const progressBar =
     document.getElementById("progressBar");
@@ -21,37 +15,29 @@ const progressPercent =
     document.getElementById("progressPercent");
 
 
-/* =========================
-   SHOW PAGE
-========================= */
+/* ================================
+   PAGE SWITCHING
+================================ */
 
 function showPage(pageNumber) {
 
     pages.forEach(page => {
+
         page.classList.remove("active");
+
     });
+
 
     const page =
         document.querySelector(
             `.page[data-page="${pageNumber}"]`
         );
 
+
     if (page) {
+
         page.classList.add("active");
-    }
 
-
-    /* Hide progress on thank-you page */
-
-    const progress =
-        document.querySelector(".progress-wrap");
-
-    if (progress) {
-
-        progress.style.display =
-            pageNumber === thankYouPage
-                ? "none"
-                : "block";
     }
 
 
@@ -62,17 +48,39 @@ function showPage(pageNumber) {
         top: 0,
         behavior: "smooth"
     });
+
 }
 
 
-/* =========================
+/* ================================
    PROGRESS
-========================= */
+================================ */
 
 function updateProgress() {
 
     if (currentPage > totalFormPages) {
+
+        const progress =
+            document.querySelector(".progress-wrap");
+
+        if (progress) {
+
+            progress.style.display = "none";
+
+        }
+
         return;
+
+    }
+
+
+    const progress =
+        document.querySelector(".progress-wrap");
+
+    if (progress) {
+
+        progress.style.display = "block";
+
     }
 
 
@@ -86,6 +94,7 @@ function updateProgress() {
 
         progressBar.style.width =
             `${percentage}%`;
+
     }
 
 
@@ -93,6 +102,7 @@ function updateProgress() {
 
         progressText.textContent =
             `section ${currentPage} of ${totalFormPages}`;
+
     }
 
 
@@ -100,13 +110,15 @@ function updateProgress() {
 
         progressPercent.textContent =
             `${percentage}%`;
+
     }
+
 }
 
 
-/* =========================
-   VALIDATE CURRENT PAGE
-========================= */
+/* ================================
+   REQUIRED QUESTIONS
+================================ */
 
 function validatePage() {
 
@@ -117,7 +129,9 @@ function validatePage() {
 
 
     if (!current) {
+
         return true;
+
     }
 
 
@@ -134,22 +148,27 @@ function validatePage() {
             input.reportValidity();
 
             return false;
+
         }
+
     }
 
 
     return true;
+
 }
 
 
-/* =========================
+/* ================================
    NEXT
-========================= */
+================================ */
 
 function nextPage() {
 
     if (!validatePage()) {
+
         return;
+
     }
 
 
@@ -158,13 +177,15 @@ function nextPage() {
         currentPage++;
 
         showPage(currentPage);
+
     }
+
 }
 
 
-/* =========================
+/* ================================
    BACK
-========================= */
+================================ */
 
 function previousPage() {
 
@@ -173,13 +194,15 @@ function previousPage() {
         currentPage--;
 
         showPage(currentPage);
+
     }
+
 }
 
 
-/* =========================
-   PROFILE
-========================= */
+/* ================================
+   PROFILE QUESTIONS
+================================ */
 
 const profileChoices =
     document.querySelectorAll(
@@ -207,17 +230,14 @@ profileChoices.forEach(choice => {
                 )
             ) {
 
-                profileFields.classList.add(
-                    "show"
-                );
+                profileFields.classList.add("show");
 
             } else {
 
-                profileFields.classList.remove(
-                    "show"
-                );
+                profileFields.classList.remove("show");
 
                 hidePfpToken();
+
             }
 
         }
@@ -226,9 +246,9 @@ profileChoices.forEach(choice => {
 });
 
 
-/* =========================
+/* ================================
    PFP TOKEN
-========================= */
+================================ */
 
 const pfpChoices =
     document.querySelectorAll(
@@ -266,10 +286,12 @@ function generatePfpToken() {
                     characters.length
                 )
             ];
+
     }
 
 
     return token;
+
 }
 
 
@@ -277,10 +299,10 @@ function hidePfpToken() {
 
     if (tokenBox) {
 
-        tokenBox.classList.remove(
-            "show"
-        );
+        tokenBox.classList.remove("show");
+
     }
+
 }
 
 
@@ -298,13 +320,12 @@ pfpChoices.forEach(choice => {
                 tokenText.textContent =
                     generatePfpToken();
 
-                tokenBox.classList.add(
-                    "show"
-                );
+                tokenBox.classList.add("show");
 
             } else {
 
                 hidePfpToken();
+
             }
 
         }
@@ -313,36 +334,30 @@ pfpChoices.forEach(choice => {
 });
 
 
-/* =========================
+/* ================================
    FINISH
-========================= */
+================================ */
 
 function finishForm() {
 
     if (!validatePage()) {
+
         return;
+
     }
 
 
-    /*
-        Currently this does NOT send
-        anything anywhere.
+    currentPage =
+        thankYouPage;
 
-        It simply shows the thank-you
-        screen.
-
-        Backend can be added later.
-    */
-
-
-    currentPage = thankYouPage;
 
     showPage(currentPage);
+
 }
 
 
-/* =========================
+/* ================================
    START
-========================= */
+================================ */
 
 showPage(1);
