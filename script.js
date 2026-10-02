@@ -435,28 +435,24 @@ async function finishForm() {
         });
 
 
-    } catch (error) {
+        } catch (error) {
 
         console.error(
             "ORISIMUL SUBMISSION ERROR:",
             error
         );
 
-
-               alert(
+        alert(
             "something went wrong while sending your application :(\n\n" +
             "Check the browser console for the exact error."
         );
 
-
         isSubmitting = false;
-
 
         if (submitButton) {
             submitButton.disabled = false;
             submitButton.textContent = "FINISH!!!";
         }
-
     }
 }
 
