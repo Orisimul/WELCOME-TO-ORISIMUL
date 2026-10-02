@@ -7,7 +7,7 @@
 
     <title>Orisimul™ — welcome :D</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
@@ -50,22 +50,21 @@
 
                 <div
                     class="progress-bar"
-                    id="progressBar"
-                ></div>
+                    id="progressBar">
+                </div>
 
             </div>
 
         </div>
 
 
-        <!-- =========================
-             SECTION 1
-        ========================== -->
+        <!-- ==================================================
+             PAGE 1 — ABOUT YOU
+        =================================================== -->
 
         <section
             class="page active"
-            data-page="1"
-        >
+            data-page="1">
 
             <div class="section-title">
                 section 01
@@ -76,82 +75,80 @@
             </h2>
 
             <p class="section-description">
+
                 welcome to Orisimul!
+
                 <br><br>
 
                 huge thanks to XCC for the new name :D
                 <br>
+
                 They came up with Orisimul Choir,
                 which eventually became just
                 <strong>Orisimul</strong>.
+
                 <br>
+
                 so yeah, thank you XCC :)
+
             </p>
 
 
             <div class="form-area">
 
 
-                <!-- NAME -->
-
                 <div class="question">
 
-                    <label>
+                    <label for="name">
                         whats your name?
                         <span class="required">*</span>
                     </label>
 
                     <input
+                        id="name"
                         type="text"
                         name="name"
                         required
-                        placeholder="your name"
-                    >
+                        placeholder="your name">
 
                 </div>
 
 
-                <!-- DISCORD -->
-
                 <div class="question">
 
-                    <label>
+                    <label for="discord">
                         what is your discord user?
                         <span class="required">*</span>
                     </label>
 
                     <input
+                        id="discord"
                         type="text"
                         name="discord"
                         required
-                        placeholder="username"
-                    >
+                        placeholder="username">
 
                 </div>
 
 
-                <!-- WHO ARE YOU -->
-
                 <div class="question">
 
-                    <label>
+                    <label for="introduction">
                         who are you?
                         introduce yourself
                     </label>
 
                     <textarea
+                        id="introduction"
                         name="introduction"
-                        placeholder="tell us about yourself..."
-                    ></textarea>
+                        placeholder="tell us about yourself..."></textarea>
 
                 </div>
 
 
-                <!-- ABOUT -->
-
                 <div class="question">
 
-                    <label>
+                    <label for="about">
                         tell us a little bit about yourself.
                     </label>
 
@@ -161,43 +158,39 @@
                     </div>
 
                     <textarea
+                        id="about"
                         name="about"
-                        placeholder="anything you want to tell us :)"
-                    ></textarea>
+                        placeholder="anything you want to tell us :)"></textarea>
 
                 </div>
 
 
-                <!-- INTERESTS -->
-
                 <div class="question">
 
-                    <label>
+                    <label for="interests">
                         what are some things you're interested
                         in making, learning, or doing?
                     </label>
 
                     <textarea
+                        id="interests"
                         name="interests"
-                        placeholder="games, coding, art, music..."
-                    ></textarea>
+                        placeholder="games, coding, art, music..."></textarea>
 
                 </div>
 
 
-                <!-- TALENTS -->
-
                 <div class="question">
 
-                    <label>
+                    <label for="talents">
                         any hidden talents?
                     </label>
 
                     <input
+                        id="talents"
                         type="text"
                         name="talents"
-                        placeholder="go on..."
-                    >
+                        placeholder="go on...">
 
                 </div>
 
@@ -211,9 +204,10 @@
                 <button
                     type="button"
                     class="button"
-                    onclick="nextPage()"
-                >
+                    onclick="nextPage()">
+
                     next →
+
                 </button>
 
             </div>
@@ -221,14 +215,13 @@
         </section>
 
 
-        <!-- =========================
-             SECTION 2
-        ========================== -->
+        <!-- ==================================================
+             PAGE 2 — ORISIMUL QUESTIONS
+        =================================================== -->
 
         <section
             class="page"
-            data-page="2"
-        >
+            data-page="2">
 
             <div class="section-title">
                 section 02
@@ -239,82 +232,73 @@
             </h2>
 
             <p class="section-description">
+
                 just a few things about what you'd like
                 to do around here :)
+
             </p>
 
 
             <div class="form-area">
 
 
-                <!-- WHY -->
-
                 <div class="question">
 
-                    <label>
-                        what made you want to be part
-                        of Orisimul?
+                    <label for="why">
+                        what made you want to be part of Orisimul?
                         <span class="required">*</span>
                     </label>
 
                     <textarea
+                        id="why"
                         name="why"
                         required
-                        placeholder="tell us why :)"
-                    ></textarea>
+                        placeholder="tell us why :)"></textarea>
 
                 </div>
 
 
-                <!-- PROJECTS -->
-
                 <div class="question">
 
-                    <label>
-                        what kind of projects would you
-                        like to help with?
+                    <label for="projects">
+                        what kind of projects would you like
+                        to help with?
                         <span class="required">*</span>
                     </label>
 
                     <textarea
+                        id="projects"
                         name="projects"
                         required
-                        placeholder="games, websites, coding, art..."
-                    ></textarea>
+                        placeholder="games, websites, coding, art..."></textarea>
 
                 </div>
 
 
-                <!-- LEARN -->
-
                 <div class="question">
 
-                    <label>
-                        is there anything you'd like
-                        to learn or try?
+                    <label for="learn">
+                        is there anything you'd like to learn or try?
                     </label>
 
                     <textarea
+                        id="learn"
                         name="learn"
-                        placeholder="anything you've wanted to try?"
-                    ></textarea>
+                        placeholder="anything you've wanted to try?"></textarea>
 
                 </div>
 
 
-                <!-- DON'T WANT -->
-
                 <div class="question">
 
-                    <label>
-                        is there anything you wouldn't
-                        want to help with?
+                    <label for="dontWant">
+                        is there anything you wouldn't want to help with?
                     </label>
 
                     <textarea
+                        id="dontWant"
                         name="dontWant"
-                        placeholder="it's completely okay to say no :)"
-                    ></textarea>
+                        placeholder="it's completely okay to say no :)"></textarea>
 
                 </div>
 
@@ -326,17 +310,20 @@
                 <button
                     type="button"
                     class="button secondary"
-                    onclick="previousPage()"
-                >
+                    onclick="previousPage()">
+
                     ← back
+
                 </button>
+
 
                 <button
                     type="button"
                     class="button"
-                    onclick="nextPage()"
-                >
+                    onclick="nextPage()">
+
                     next →
+
                 </button>
 
             </div>
@@ -344,14 +331,13 @@
         </section>
 
 
-        <!-- =========================
-             SECTION 3
-        ========================== -->
+        <!-- ==================================================
+             PAGE 3 — FUTURE PROFILE
+        =================================================== -->
 
         <section
             class="page"
-            data-page="3"
-        >
+            data-page="3">
 
             <div class="section-title">
                 section 03
@@ -363,11 +349,11 @@
 
             <p class="section-description">
 
-                At some point in the future, Orisimul
-                might have a website or something similar
-                where you can see the projects we're working
-                on, see what everyone is up to, and learn a
-                little about the people involved.
+                At some point in the future, Orisimul might
+                have a website or something similar where
+                you can see the projects we're working on,
+                see what everyone is up to, and learn a little
+                about the people involved.
 
                 <br><br>
 
@@ -381,8 +367,6 @@
             <div class="form-area">
 
 
-                <!-- PROFILE -->
-
                 <div class="question">
 
                     <label>
@@ -391,7 +375,9 @@
                         <span class="required">*</span>
                     </label>
 
+
                     <div class="options">
+
 
                         <label class="option">
 
@@ -399,8 +385,7 @@
                                 type="radio"
                                 name="profile"
                                 value="yes"
-                                required
-                            >
+                                required>
 
                             Yes
 
@@ -412,8 +397,7 @@
                             <input
                                 type="radio"
                                 name="profile"
-                                value="no"
-                            >
+                                value="no">
 
                             No
 
@@ -425,12 +409,12 @@
                             <input
                                 type="radio"
                                 name="profile"
-                                value="maybe"
-                            >
+                                value="maybe">
 
                             Maybe
 
                         </label>
+
 
                     </div>
 
@@ -441,96 +425,94 @@
 
                 <div
                     class="profile-fields"
-                    id="profileFields"
-                >
+                    id="profileFields">
 
 
                     <div class="question">
 
-                        <label>
+                        <label for="profileUsername">
                             what username would you like?
                         </label>
 
                         <input
+                            id="profileUsername"
                             type="text"
                             name="profileUsername"
-                            placeholder="something like h4ran"
-                        >
+                            placeholder="something like h4ran">
 
                     </div>
 
 
                     <div class="question">
 
-                        <label>
-                            what name would you like
-                            people to see?
+                        <label for="profileName">
+                            what name would you like people to see?
                         </label>
 
                         <input
+                            id="profileName"
                             type="text"
                             name="profileName"
-                            placeholder="display name"
-                        >
+                            placeholder="display name">
 
                     </div>
 
 
                     <div class="question">
 
-                        <label>
+                        <label for="profileBio">
                             tell us a little about yourself
                             for your profile.
                         </label>
 
                         <textarea
+                            id="profileBio"
                             name="profileBio"
-                            placeholder="a little bio..."
-                        ></textarea>
+                            placeholder="a little bio..."></textarea>
 
                     </div>
 
 
                     <div class="question">
 
-                        <label>
+                        <label for="profileInterests">
                             what are your interests?
                         </label>
 
                         <textarea
+                            id="profileInterests"
                             name="profileInterests"
-                            placeholder="things you like..."
-                        ></textarea>
+                            placeholder="things you like..."></textarea>
 
                     </div>
 
 
                     <div class="question">
 
-                        <label>
+                        <label for="profileSkills">
                             what are you good at /
                             enjoy doing?
                         </label>
 
                         <textarea
+                            id="profileSkills"
                             name="profileSkills"
-                            placeholder="coding, art, building things..."
-                        ></textarea>
+                            placeholder="coding, art, building things..."></textarea>
 
                     </div>
 
 
                     <div class="question">
 
-                        <label>
-                            is there anything else you'd
-                            like shown on your profile?
+                        <label for="profileExtra">
+                            is there anything else you'd like
+                            shown on your profile?
                         </label>
 
                         <textarea
+                            id="profileExtra"
                             name="profileExtra"
-                            placeholder="anything else?"
-                        ></textarea>
+                            placeholder="anything else?"></textarea>
 
                     </div>
 
@@ -543,15 +525,16 @@
                             would you want a profile picture?
                         </label>
 
+
                         <div class="options">
+
 
                             <label class="option">
 
                                 <input
                                     type="radio"
                                     name="pfp"
-                                    value="yes"
-                                >
+                                    value="yes">
 
                                 Yes
 
@@ -563,12 +546,12 @@
                                 <input
                                     type="radio"
                                     name="pfp"
-                                    value="no"
-                                >
+                                    value="no">
 
                                 No
 
                             </label>
+
 
                         </div>
 
@@ -577,24 +560,28 @@
 
                         <div
                             class="token-box"
-                            id="tokenBox"
-                        >
+                            id="tokenBox">
+
 
                             <div class="token-title">
                                 YOUR PFP TOKEN
                             </div>
 
+
                             <div
                                 class="token"
-                                id="pfpToken"
-                            >
+                                id="pfpToken">
+
                                 OR-XXXXX
+
                             </div>
+
 
                             <div class="token-info">
 
                                 this token doesn't really
                                 mean anything lol
+
                                 <br>
 
                                 DM H4RAN this token along
@@ -602,6 +589,7 @@
                                 want to use :)
 
                             </div>
+
 
                         </div>
 
@@ -614,35 +602,39 @@
 
             <div class="navigation">
 
+
                 <button
                     type="button"
                     class="button secondary"
-                    onclick="previousPage()"
-                >
+                    onclick="previousPage()">
+
                     ← back
+
                 </button>
+
 
                 <button
                     type="button"
                     class="button"
-                    onclick="nextPage()"
-                >
+                    onclick="nextPage()">
+
                     next →
+
                 </button>
+
 
             </div>
 
         </section>
 
 
-        <!-- =========================
-             SECTION 4
-        ========================== -->
+        <!-- ==================================================
+             PAGE 4 — WORKING TOGETHER
+        =================================================== -->
 
         <section
             class="page"
-            data-page="4"
-        >
+            data-page="4">
 
             <div class="section-title">
                 section 04
@@ -653,40 +645,40 @@
             </h2>
 
             <p class="section-description">
+
                 just a few things that can help make
                 working together easier :)
+
             </p>
 
 
             <div class="form-area">
 
 
-                <!-- SUPPORT -->
-
                 <div class="question">
 
-                    <label>
+                    <label for="support">
                         is there anything I should know
                         that would help me support you
                         while working with Orisimul?
                     </label>
 
                     <div class="description">
+
                         For example: needing breaks,
                         communication preferences,
                         things that make teamwork easier
                         for you.
+
                     </div>
 
                     <textarea
+                        id="support"
                         name="support"
-                        placeholder="anything that would help..."
-                    ></textarea>
+                        placeholder="anything that would help..."></textarea>
 
                 </div>
 
-
-                <!-- AVAILABILITY -->
 
                 <div class="question">
 
@@ -700,8 +692,7 @@
                             <input
                                 type="radio"
                                 name="availability"
-                                value="1"
-                            >
+                                value="1">
                             1
                         </label>
 
@@ -709,8 +700,7 @@
                             <input
                                 type="radio"
                                 name="availability"
-                                value="2"
-                            >
+                                value="2">
                             2
                         </label>
 
@@ -718,8 +708,7 @@
                             <input
                                 type="radio"
                                 name="availability"
-                                value="3"
-                            >
+                                value="3">
                             3
                         </label>
 
@@ -727,8 +716,7 @@
                             <input
                                 type="radio"
                                 name="availability"
-                                value="4"
-                            >
+                                value="4">
                             4
                         </label>
 
@@ -736,8 +724,7 @@
                             <input
                                 type="radio"
                                 name="availability"
-                                value="5"
-                            >
+                                value="5">
                             5
                         </label>
 
@@ -745,8 +732,6 @@
 
                 </div>
 
-
-                <!-- TALKING -->
 
                 <div class="question">
 
@@ -761,8 +746,7 @@
                             <input
                                 type="radio"
                                 name="social"
-                                value="1"
-                            >
+                                value="1">
                             1
                         </label>
 
@@ -770,8 +754,7 @@
                             <input
                                 type="radio"
                                 name="social"
-                                value="2"
-                            >
+                                value="2">
                             2
                         </label>
 
@@ -779,8 +762,7 @@
                             <input
                                 type="radio"
                                 name="social"
-                                value="3"
-                            >
+                                value="3">
                             3
                         </label>
 
@@ -788,8 +770,7 @@
                             <input
                                 type="radio"
                                 name="social"
-                                value="4"
-                            >
+                                value="4">
                             4
                         </label>
 
@@ -797,8 +778,7 @@
                             <input
                                 type="radio"
                                 name="social"
-                                value="5"
-                            >
+                                value="5">
                             5
                         </label>
 
@@ -807,57 +787,49 @@
                 </div>
 
 
-                <!-- COMMUNICATION -->
-
                 <div class="question">
 
-                    <label>
+                    <label for="communication">
                         how do you prefer to communicate?
                     </label>
 
                     <textarea
+                        id="communication"
                         name="communication"
-                        placeholder="Discord, DMs, voice calls..."
-                    ></textarea>
+                        placeholder="Discord, DMs, voice calls..."></textarea>
 
                 </div>
 
 
-                <!-- EASY -->
-
                 <div class="question">
 
-                    <label>
+                    <label for="teamworkEasy">
                         is there anything that makes
                         working with other people easier
                         for you?
                     </label>
 
                     <textarea
-                        name="teamworkEasy"
-                    ></textarea>
+                        id="teamworkEasy"
+                        name="teamworkEasy"></textarea>
 
                 </div>
 
 
-                <!-- DIFFICULT -->
-
                 <div class="question">
 
-                    <label>
+                    <label for="teamworkDifficult">
                         is there anything that makes
                         group work difficult or uncomfortable
                         for you?
                     </label>
 
                     <textarea
-                        name="teamworkDifficult"
-                    ></textarea>
+                        id="teamworkDifficult"
+                        name="teamworkDifficult"></textarea>
 
                 </div>
 
-
-                <!-- UNDERSTANDING -->
 
                 <div class="question">
 
@@ -869,6 +841,7 @@
                         <span class="required">*</span>
                     </label>
 
+
                     <div class="options">
 
                         <label class="option">
@@ -877,20 +850,19 @@
                                 type="radio"
                                 name="understand"
                                 value="yes"
-                                required
-                            >
+                                required>
 
                             yes
 
                         </label>
+
 
                         <label class="option">
 
                             <input
                                 type="radio"
                                 name="understand"
-                                value="no"
-                            >
+                                value="no">
 
                             no
 
@@ -905,35 +877,39 @@
 
             <div class="navigation">
 
+
                 <button
                     type="button"
                     class="button secondary"
-                    onclick="previousPage()"
-                >
+                    onclick="previousPage()">
+
                     ← back
+
                 </button>
+
 
                 <button
                     type="button"
                     class="button"
-                    onclick="nextPage()"
-                >
+                    onclick="nextPage()">
+
                     next →
+
                 </button>
+
 
             </div>
 
         </section>
 
 
-        <!-- =========================
-             SECTION 5
-        ========================== -->
+        <!-- ==================================================
+             PAGE 5 — FINAL
+        =================================================== -->
 
         <section
             class="page"
-            data-page="5"
-        >
+            data-page="5">
 
             <div class="final">
 
@@ -946,26 +922,36 @@
                 </h1>
 
                 <p>
-                    do you have any questions of your own?
+                    just one last thing :)
                 </p>
 
-                <textarea
-                    name="questions"
-                    placeholder="anything you want to ask..."
-                ></textarea>
+
+                <div class="question">
+
+                    <label for="questions">
+                        do you have any questions of your own?
+                    </label>
+
+                    <textarea
+                        id="questions"
+                        name="questions"
+                        placeholder="anything you want to ask..."></textarea>
+
+                </div>
 
 
-                <br><br>
+                <div class="question">
 
+                    <label for="extra">
+                        anything else you want to add :)
+                    </label>
 
-                <p>
-                    anything else you want to add :)
-                </p>
+                    <textarea
+                        id="extra"
+                        name="extra"
+                        placeholder="anything else..."></textarea>
 
-                <textarea
-                    name="extra"
-                    placeholder="anything else..."
-                ></textarea>
+                </div>
 
 
                 <div class="navigation">
@@ -973,17 +959,20 @@
                     <button
                         type="button"
                         class="button secondary"
-                        onclick="previousPage()"
-                    >
+                        onclick="previousPage()">
+
                         ← back
+
                     </button>
+
 
                     <button
                         type="button"
                         class="button"
-                        onclick="finishForm()"
-                    >
+                        onclick="finishForm()">
+
                         finish :D
+
                     </button>
 
                 </div>
@@ -993,14 +982,13 @@
         </section>
 
 
-        <!-- =========================
+        <!-- ==================================================
              THANK YOU
-        ========================== -->
+        =================================================== -->
 
         <section
             class="page"
-            data-page="6"
-        >
+            data-page="6">
 
             <div class="final">
 
@@ -1049,7 +1037,7 @@
     </main>
 
 
-    <script src="script.js"></script>
+    <script src="./script.js"></script>
 
 </body>
 
