@@ -9,6 +9,14 @@
 
 <body>
 
+<form
+    id="orisimulForm"
+    name="orisimul-application"
+    method="POST"
+    data-netlify="true"
+    netlify
+>
+
 <div class="container">
 
     <div class="header">
@@ -47,17 +55,17 @@
 
             <div class="question">
                 <label>whats your name? <span class="required">*</span></label>
-                <input type="text" required>
+                <input type="text" name="name" required>
             </div>
 
             <div class="question">
                 <label>what is your discord user? <span class="required">*</span></label>
-                <input type="text" required>
+                <input type="text" name="discord" required>
             </div>
 
             <div class="question">
                 <label>who are you? introduce yourself</label>
-                <textarea></textarea>
+                <textarea name="introduction"></textarea>
             </div>
 
             <div class="question">
@@ -65,17 +73,17 @@
                 <div class="description">
                     (Your hobbies, interests, things you enjoy, or anything you want us to know.)
                 </div>
-                <textarea></textarea>
+                <textarea name="about"></textarea>
             </div>
 
             <div class="question">
                 <label>what are some things you're interested in making, learning, or doing?</label>
-                <textarea></textarea>
+                <textarea name="interests"></textarea>
             </div>
 
             <div class="question">
                 <label>any hidden talents?</label>
-                <input type="text">
+                <input type="text" name="talents">
             </div>
 
             <div class="navigation">
@@ -103,7 +111,7 @@
                     what made you want to be part of Orisimul™?
                     <span class="required">*</span>
                 </label>
-                <textarea required></textarea>
+                <textarea name="why-orisimul" required></textarea>
             </div>
 
             <div class="question">
@@ -111,17 +119,17 @@
                     what kind of projects would you like to help with?
                     <span class="required">*</span>
                 </label>
-                <textarea required></textarea>
+                <textarea name="projects" required></textarea>
             </div>
 
             <div class="question">
                 <label>is there anything you'd like to learn or try?</label>
-                <textarea></textarea>
+                <textarea name="learn"></textarea>
             </div>
 
             <div class="question">
                 <label>is there anything you wouldn't want to help with?</label>
-                <textarea></textarea>
+                <textarea name="dont-want"></textarea>
             </div>
 
             <div class="navigation">
@@ -168,17 +176,30 @@
                 <div class="options">
 
                     <label class="option">
-                        <input type="radio" name="profile" value="yes">
+                        <input
+                            type="radio"
+                            name="profile"
+                            value="yes"
+                            required
+                        >
                         <span>Yes</span>
                     </label>
 
                     <label class="option">
-                        <input type="radio" name="profile" value="no">
+                        <input
+                            type="radio"
+                            name="profile"
+                            value="no"
+                        >
                         <span>No</span>
                     </label>
 
                     <label class="option">
-                        <input type="radio" name="profile" value="maybe">
+                        <input
+                            type="radio"
+                            name="profile"
+                            value="maybe"
+                        >
                         <span>Maybe</span>
                     </label>
 
@@ -190,32 +211,32 @@
 
                 <div class="question">
                     <label>what username would you like?</label>
-                    <input type="text">
+                    <input type="text" name="profile-username">
                 </div>
 
                 <div class="question">
                     <label>what name would you like people to see?</label>
-                    <input type="text">
+                    <input type="text" name="profile-display-name">
                 </div>
 
                 <div class="question">
                     <label>tell us a little about yourself for your profile.</label>
-                    <textarea></textarea>
+                    <textarea name="profile-about"></textarea>
                 </div>
 
                 <div class="question">
                     <label>what are your interests?</label>
-                    <textarea></textarea>
+                    <textarea name="profile-interests"></textarea>
                 </div>
 
                 <div class="question">
                     <label>what are you good at / enjoy doing?</label>
-                    <textarea></textarea>
+                    <textarea name="profile-skills"></textarea>
                 </div>
 
                 <div class="question">
                     <label>is there anything else you'd like shown on your profile?</label>
-                    <textarea></textarea>
+                    <textarea name="profile-extra"></textarea>
                 </div>
 
                 <div class="question">
@@ -225,12 +246,22 @@
                     <div class="options">
 
                         <label class="option">
-                            <input type="radio" name="pfp" value="yes" id="pfpYes">
+                            <input
+                                type="radio"
+                                name="pfp"
+                                value="yes"
+                                id="pfpYes"
+                            >
                             <span>Yes</span>
                         </label>
 
                         <label class="option">
-                            <input type="radio" name="pfp" value="no" id="pfpNo">
+                            <input
+                                type="radio"
+                                name="pfp"
+                                value="no"
+                                id="pfpNo"
+                            >
                             <span>No</span>
                         </label>
 
@@ -296,7 +327,7 @@
                     things that make teamwork easier for you.)
                 </div>
 
-                <textarea></textarea>
+                <textarea name="support"></textarea>
 
             </div>
 
@@ -409,7 +440,7 @@
                     easier for you?
                 </label>
 
-                <textarea></textarea>
+                <textarea name="teamwork-easier"></textarea>
 
             </div>
 
@@ -420,7 +451,7 @@
                     uncomfortable for you?
                 </label>
 
-                <textarea></textarea>
+                <textarea name="teamwork-difficult"></textarea>
 
             </div>
 
@@ -435,12 +466,20 @@
                 <div class="options">
 
                     <label class="option">
-                        <input type="radio" name="understand" value="yes">
+                        <input
+                            type="radio"
+                            name="understand"
+                            value="yes"
+                        >
                         <span>yes</span>
                     </label>
 
                     <label class="option">
-                        <input type="radio" name="understand" value="no">
+                        <input
+                            type="radio"
+                            name="understand"
+                            value="no"
+                        >
                         <span>no</span>
                     </label>
 
@@ -478,7 +517,7 @@
 
                 <label>do you have any questions of your own?</label>
 
-                <textarea></textarea>
+                <textarea name="questions"></textarea>
 
             </div>
 
@@ -486,7 +525,7 @@
 
                 <label>anything else you want to add :)</label>
 
-                <textarea></textarea>
+                <textarea name="extra"></textarea>
 
             </div>
 
@@ -535,6 +574,8 @@
     </footer>
 
 </div>
+
+</form>
 
 <script src="script.js"></script>
 
