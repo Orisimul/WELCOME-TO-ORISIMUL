@@ -1,3 +1,4 @@
+```css
 * {
     box-sizing: border-box;
 }
@@ -9,7 +10,6 @@ html {
 body {
     margin: 0;
     min-height: 100vh;
-
     font-family: Arial, sans-serif;
 
     background:
@@ -21,14 +21,8 @@ body {
         );
 
     color: #f3f5f7;
-
     overflow-x: hidden;
 }
-
-
-/* =================================
-   BACKGROUND LIGHT
-================================= */
 
 body::before {
     content: "";
@@ -53,9 +47,9 @@ body::before {
 }
 
 
-/* =================================
-   CONTAINER
-================================= */
+/* =========================
+   MAIN CONTAINER
+========================= */
 
 .container {
     width: min(1000px, calc(100% - 40px));
@@ -66,9 +60,9 @@ body::before {
 }
 
 
-/* =================================
+/* =========================
    HERO
-================================= */
+========================= */
 
 .hero {
     text-align: center;
@@ -84,7 +78,6 @@ body::before {
     color: #f0d58a;
 
     font-size: 12px;
-
     font-weight: 400;
 
     letter-spacing: 7px;
@@ -124,9 +117,9 @@ body::before {
 }
 
 
-/* =================================
+/* =========================
    PROGRESS
-================================= */
+========================= */
 
 .progress-wrap {
     max-width: 850px;
@@ -187,9 +180,9 @@ body::before {
 }
 
 
-/* =================================
-   PAGE
-================================= */
+/* =========================
+   PAGES
+========================= */
 
 .page {
     display: none;
@@ -207,9 +200,9 @@ body::before {
 }
 
 
-/* =================================
+/* =========================
    MAIN CARD
-================================= */
+========================= */
 
 .card {
     position: relative;
@@ -225,7 +218,8 @@ body::before {
             rgba(13, 19, 29, 0.94)
         );
 
-    border: 1px solid rgba(214, 168, 79, 0.16);
+    border:
+        1px solid rgba(214, 168, 79, 0.16);
 
     border-radius: 24px;
 
@@ -252,7 +246,8 @@ body::before {
     top: -150px;
     right: -80px;
 
-    background: rgba(214, 168, 79, 0.07);
+    background:
+        rgba(214, 168, 79, 0.07);
 
     filter: blur(70px);
 
@@ -260,7 +255,8 @@ body::before {
 }
 
 .card:hover {
-    border-color: rgba(214, 168, 79, 0.25);
+    border-color:
+        rgba(214, 168, 79, 0.25);
 
     box-shadow:
         0 35px 90px rgba(0, 0, 0, 0.4),
@@ -268,9 +264,9 @@ body::before {
 }
 
 
-/* =================================
-   SECTION HEADER
-================================= */
+/* =========================
+   SECTION TEXT
+========================= */
 
 .section-title {
     margin-bottom: 15px;
@@ -278,7 +274,6 @@ body::before {
     color: #d6a84f;
 
     font-size: 11px;
-
     font-weight: 500;
 
     letter-spacing: 4px;
@@ -292,7 +287,6 @@ body::before {
     color: #f3f5f7;
 
     font-size: 32px;
-
     font-weight: 500;
 
     letter-spacing: 0.5px;
@@ -317,9 +311,9 @@ body::before {
 }
 
 
-/* =================================
-   FORM AREA
-================================= */
+/* =========================
+   FORM
+========================= */
 
 .form-area {
     margin-top: 42px;
@@ -362,9 +356,9 @@ body::before {
 }
 
 
-/* =================================
+/* =========================
    INPUTS
-================================= */
+========================= */
 
 input[type="text"],
 textarea {
@@ -374,13 +368,15 @@ textarea {
 
     padding: 15px 17px;
 
-    border: 1px solid rgba(83, 101, 125, 0.28);
+    border:
+        1px solid rgba(83, 101, 125, 0.28);
 
     border-radius: 13px;
 
     outline: none;
 
-    background: rgba(8, 12, 20, 0.65);
+    background:
+        rgba(8, 12, 20, 0.65);
 
     color: #f3f5f7;
 
@@ -410,14 +406,17 @@ textarea::placeholder {
 
 input[type="text"]:hover,
 textarea:hover {
-    border-color: rgba(214, 168, 79, 0.22);
+    border-color:
+        rgba(214, 168, 79, 0.22);
 }
 
 input[type="text"]:focus,
 textarea:focus {
-    border-color: rgba(214, 168, 79, 0.55);
+    border-color:
+        rgba(214, 168, 79, 0.55);
 
-    background: rgba(8, 12, 20, 0.85);
+    background:
+        rgba(8, 12, 20, 0.85);
 
     box-shadow:
         0 0 0 3px rgba(214, 168, 79, 0.055),
@@ -425,9 +424,9 @@ textarea:focus {
 }
 
 
-/* =================================
+/* =========================
    OPTIONS
-================================= */
+========================= */
 
 .options {
     display: flex;
@@ -446,11 +445,13 @@ textarea:focus {
 
     padding: 12px 18px;
 
-    border: 1px solid rgba(83, 101, 125, 0.25);
+    border:
+        1px solid rgba(83, 101, 125, 0.25);
 
     border-radius: 13px;
 
-    background: rgba(8, 12, 20, 0.45);
+    background:
+        rgba(8, 12, 20, 0.45);
 
     color: #c9ced6;
 
@@ -468,9 +469,11 @@ textarea:focus {
 .option:hover {
     transform: translateY(-2px);
 
-    border-color: rgba(214, 168, 79, 0.35);
+    border-color:
+        rgba(214, 168, 79, 0.35);
 
-    background: rgba(214, 168, 79, 0.055);
+    background:
+        rgba(214, 168, 79, 0.055);
 
     color: #f0d58a;
 }
@@ -480,9 +483,9 @@ textarea:focus {
 }
 
 
-/* =================================
-   SCALE
-================================= */
+/* =========================
+   1–5 SCALE
+========================= */
 
 .scale {
     display: flex;
@@ -496,16 +499,19 @@ textarea:focus {
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
     width: 48px;
     height: 48px;
 
-    border: 1px solid rgba(83, 101, 125, 0.25);
+    border:
+        1px solid rgba(83, 101, 125, 0.25);
 
     border-radius: 13px;
 
-    background: rgba(8, 12, 20, 0.45);
+    background:
+        rgba(8, 12, 20, 0.45);
 
     color: #8993a3;
 
@@ -523,7 +529,8 @@ textarea:focus {
 .scale label:hover {
     transform: translateY(-2px);
 
-    border-color: rgba(214, 168, 79, 0.35);
+    border-color:
+        rgba(214, 168, 79, 0.35);
 
     color: #f0d58a;
 }
@@ -539,7 +546,8 @@ textarea:focus {
 .scale label:has(input:checked) {
     border-color: #d6a84f;
 
-    background: rgba(214, 168, 79, 0.12);
+    background:
+        rgba(214, 168, 79, 0.12);
 
     color: #f0d58a;
 
@@ -548,9 +556,9 @@ textarea:focus {
 }
 
 
-/* =================================
+/* =========================
    PROFILE FIELDS
-================================= */
+========================= */
 
 .profile-fields {
     display: none;
@@ -559,19 +567,21 @@ textarea:focus {
 
     padding-top: 38px;
 
-    border-top: 1px solid rgba(214, 168, 79, 0.12);
+    border-top:
+        1px solid rgba(214, 168, 79, 0.12);
 }
 
 .profile-fields.show {
     display: block;
 
-    animation: fadeIn 0.35s ease;
+    animation:
+        fadeIn 0.35s ease;
 }
 
 
-/* =================================
+/* =========================
    PFP TOKEN
-================================= */
+========================= */
 
 .token-box {
     display: none;
@@ -589,7 +599,8 @@ textarea:focus {
             rgba(214, 168, 79, 0.025)
         );
 
-    border: 1px solid rgba(214, 168, 79, 0.18);
+    border:
+        1px solid rgba(214, 168, 79, 0.18);
 
     border-radius: 18px;
 
@@ -600,7 +611,8 @@ textarea:focus {
 .token-box.show {
     display: block;
 
-    animation: fadeIn 0.35s ease;
+    animation:
+        fadeIn 0.35s ease;
 }
 
 .token-title {
@@ -620,9 +632,11 @@ textarea:focus {
 
     padding: 11px 18px;
 
-    background: rgba(8, 12, 20, 0.8);
+    background:
+        rgba(8, 12, 20, 0.8);
 
-    border: 1px solid rgba(214, 168, 79, 0.15);
+    border:
+        1px solid rgba(214, 168, 79, 0.15);
 
     border-radius: 9px;
 
@@ -649,9 +663,9 @@ textarea:focus {
 }
 
 
-/* =================================
-   NAVIGATION
-================================= */
+/* =========================
+   BUTTONS
+========================= */
 
 .navigation {
     display: flex;
@@ -668,7 +682,8 @@ textarea:focus {
 .button {
     padding: 13px 26px;
 
-    border: 1px solid rgba(214, 168, 79, 0.35);
+    border:
+        1px solid rgba(214, 168, 79, 0.35);
 
     border-radius: 30px;
 
@@ -697,7 +712,8 @@ textarea:focus {
 .button:hover {
     transform: translateY(-3px);
 
-    border-color: rgba(214, 168, 79, 0.6);
+    border-color:
+        rgba(214, 168, 79, 0.6);
 
     background:
         linear-gradient(
@@ -715,25 +731,29 @@ textarea:focus {
 }
 
 .button.secondary {
-    border-color: rgba(83, 101, 125, 0.3);
+    border-color:
+        rgba(83, 101, 125, 0.3);
 
-    background: rgba(83, 101, 125, 0.07);
+    background:
+        rgba(83, 101, 125, 0.07);
 
     color: #8993a3;
 }
 
 .button.secondary:hover {
-    border-color: rgba(83, 101, 125, 0.55);
+    border-color:
+        rgba(83, 101, 125, 0.55);
 
-    background: rgba(83, 101, 125, 0.13);
+    background:
+        rgba(83, 101, 125, 0.13);
 
     box-shadow: none;
 }
 
 
-/* =================================
-   THANK YOU BOX
-================================= */
+/* =========================
+   THANK YOU SCREEN
+========================= */
 
 .thanks-box {
     position: relative;
@@ -755,7 +775,8 @@ textarea:focus {
             rgba(10, 15, 23, 0.96)
         );
 
-    border: 1px solid rgba(214, 168, 79, 0.3);
+    border:
+        1px solid rgba(214, 168, 79, 0.3);
 
     border-radius: 28px;
 
@@ -777,7 +798,8 @@ textarea:focus {
 
     transform: translateX(-50%);
 
-    background: rgba(214, 168, 79, 0.12);
+    background:
+        rgba(214, 168, 79, 0.12);
 
     filter: blur(80px);
 }
@@ -822,9 +844,9 @@ textarea:focus {
 }
 
 
-/* =================================
+/* =========================
    XCC THANK YOU
-================================= */
+========================= */
 
 .xcc-thanks {
     position: relative;
@@ -835,9 +857,11 @@ textarea:focus {
 
     padding: 27px 30px;
 
-    background: rgba(214, 168, 79, 0.045);
+    background:
+        rgba(214, 168, 79, 0.045);
 
-    border: 1px solid rgba(214, 168, 79, 0.15);
+    border:
+        1px solid rgba(214, 168, 79, 0.15);
 
     border-radius: 18px;
 }
@@ -870,6 +894,11 @@ textarea:focus {
     font-weight: 500;
 }
 
+
+/* =========================
+   LITTLE FOOTER LINE
+========================= */
+
 .little-line {
     position: relative;
 
@@ -887,14 +916,15 @@ textarea:focus {
 }
 
 
-/* =================================
+/* =========================
    FOOTER
-================================= */
+========================= */
 
 .footer {
     display: flex;
 
     justify-content: center;
+
     align-items: center;
 
     gap: 10px;
@@ -917,9 +947,9 @@ textarea:focus {
 }
 
 
-/* =================================
+/* =========================
    ANIMATIONS
-================================= */
+========================= */
 
 @keyframes fadeIn {
 
@@ -930,7 +960,6 @@ textarea:focus {
     to {
         opacity: 1;
     }
-
 }
 
 @keyframes pageAppear {
@@ -950,13 +979,12 @@ textarea:focus {
             translateY(0)
             scale(1);
     }
-
 }
 
 
-/* =================================
+/* =========================
    MOBILE
-================================= */
+========================= */
 
 @media (max-width: 700px) {
 
@@ -1038,5 +1066,5 @@ textarea:focus {
 
         gap: 5px;
     }
-
 }
+```
