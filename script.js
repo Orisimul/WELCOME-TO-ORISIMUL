@@ -1,3 +1,4 @@
+```js
 let currentPage = 1;
 const totalPages = 5;
 
@@ -17,8 +18,8 @@ function showPage(page) {
     });
 
     const selected = document.querySelector(
-    '.page[data-page="' + page + '"]'
-);
+        '.page[data-page="' + page + '"]'
+    );
 
     if (selected) {
         selected.classList.add("active");
@@ -40,7 +41,7 @@ function showPage(page) {
 
     if (progressText) {
         progressText.textContent =
-    "section " + page + " of " + totalPages;
+            "section " + page + " of " + totalPages;
     }
 
     window.scrollTo({
@@ -52,8 +53,8 @@ function showPage(page) {
 
 function validateCurrentPage() {
     const page = document.querySelector(
-    '.page[data-page="' + currentPage + '"]'
-);
+        '.page[data-page="' + currentPage + '"]'
+    );
 
     if (!page) {
         return true;
@@ -103,7 +104,6 @@ const profileInputs =
 
 profileInputs.forEach((input) => {
     input.addEventListener("change", () => {
-
         const profileFields =
             document.getElementById("profileFields");
 
@@ -165,7 +165,6 @@ const pfpTokenBox =
 
 if (pfpYes) {
     pfpYes.addEventListener("change", () => {
-
         if (pfpToken) {
             pfpToken.textContent =
                 generatePfpToken();
@@ -180,7 +179,6 @@ if (pfpYes) {
 
 if (pfpNo) {
     pfpNo.addEventListener("change", () => {
-
         if (pfpTokenBox) {
             pfpTokenBox.classList.remove("visible");
         }
@@ -193,7 +191,6 @@ if (pfpNo) {
 // ================================
 
 async function finishForm() {
-
     if (isSubmitting) {
         return;
     }
@@ -218,9 +215,7 @@ async function finishForm() {
     const formData =
         new FormData(form);
 
-
     const application = {
-
         name:
             formData.get("name") || "",
 
@@ -319,7 +314,6 @@ async function finishForm() {
 
 
     try {
-
         const response = await fetch(
             SUPABASE_FUNCTION_URL,
             {
@@ -339,7 +333,6 @@ async function finishForm() {
 
 
         if (!response.ok) {
-
             console.error(
                 "Supabase submission failed:",
                 response.status,
@@ -367,7 +360,6 @@ async function finishForm() {
         const progressArea =
             document.querySelector(".progress-area");
 
-
         if (progressArea) {
             progressArea.style.display = "none";
         }
@@ -375,7 +367,6 @@ async function finishForm() {
 
         const thankYou =
             document.getElementById("thankYou");
-
 
         if (thankYou) {
             thankYou.classList.add("active");
@@ -387,22 +378,17 @@ async function finishForm() {
             behavior: "smooth"
         });
 
-
     } catch (error) {
-
         console.error(
             "Orisimul application error:",
             error
         );
 
-
         alert(
             "something went wrong while sending your application :("
         );
 
-
         isSubmitting = false;
-
 
         if (submitButton) {
             submitButton.disabled = false;
@@ -417,3 +403,4 @@ async function finishForm() {
 // ================================
 
 showPage(currentPage);
+```
