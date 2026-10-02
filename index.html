@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Orisimul™ — welcome :D</title>
+    <title>Orisimul — welcome :D</title>
 
     <link rel="stylesheet" href="./style.css">
 </head>
@@ -14,11 +15,8 @@
 
     <main class="container">
 
-        <!-- HERO -->
-
         <section class="hero">
-
-            <h3>ORISIMUL™</h3>
+            <h3>ORISIMUL</h3>
 
             <h1>welcome :D</h1>
 
@@ -26,43 +24,10 @@
                 a little place for people who want to
                 make things together.
             </p>
-
         </section>
 
 
-        <!-- PROGRESS -->
-
-        <div class="progress-wrap">
-
-            <div class="progress-info">
-
-                <span id="progressText">
-                    section 1 of 5
-                </span>
-
-                <span id="progressPercent">
-                    20%
-                </span>
-
-            </div>
-
-            <div class="progress">
-
-                <div
-                    class="progress-bar"
-                    id="progressBar">
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- ==========================================
-             SECTION 1
-        =========================================== -->
-
-        <section class="page active" data-page="1">
+        <section class="form-section">
 
             <div class="card">
 
@@ -70,24 +35,20 @@
                     hi :D
                 </div>
 
-                <h2 class="section-heading">
+                <h2>
                     welcome to Orisimul!
                 </h2>
 
-                <p class="section-description">
-
+                <p class="description">
                     huge thanks to XCC for the new name :D
-
                     <br><br>
 
                     They came up with Orisimul Choir,
                     which eventually became just
                     <strong>Orisimul</strong>.
-
                     <br>
 
                     so yeah, thank you XCC :)
-
                 </p>
 
 
@@ -97,16 +58,12 @@
 
                         <label for="name">
                             whats your name?
-                            <span class="required">*</span>
                         </label>
 
                         <input
                             id="name"
                             type="text"
-                            name="name"
-                            required
                             placeholder="your name">
-
                     </div>
 
 
@@ -114,16 +71,12 @@
 
                         <label for="discord">
                             what is your discord user?
-                            <span class="required">*</span>
                         </label>
 
                         <input
                             id="discord"
                             type="text"
-                            name="discord"
-                            required
                             placeholder="username">
-
                     </div>
 
 
@@ -135,7 +88,6 @@
 
                         <textarea
                             id="introduction"
-                            name="introduction"
                             placeholder="tell us about yourself..."></textarea>
 
                     </div>
@@ -147,14 +99,13 @@
                             tell us a little bit about yourself.
                         </label>
 
-                        <div class="description">
+                        <div class="description-small">
                             Your hobbies, interests, things you enjoy,
                             or anything you want us to know.
                         </div>
 
                         <textarea
                             id="about"
-                            name="about"
                             placeholder="anything you want to tell us :)"></textarea>
 
                     </div>
@@ -169,7 +120,6 @@
 
                         <textarea
                             id="interests"
-                            name="interests"
                             placeholder="games, coding, art, music..."></textarea>
 
                     </div>
@@ -184,227 +134,47 @@
                         <input
                             id="talents"
                             type="text"
-                            name="talents"
                             placeholder="go on...">
 
                     </div>
 
-                </div>
-
-
-                <div class="navigation">
-
-                    <button
-                        type="button"
-                        class="button"
-                        onclick="nextPage()">
-
-                        next →
-
-                    </button>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- ==========================================
-             SECTION 2
-        =========================================== -->
-
-        <section class="page" data-page="2">
-
-            <div class="card">
-
-                <div class="section-title">
-                    ORISIMUL QUESTIONS
-                </div>
-
-                <h2 class="section-heading">
-                    a few simple questions
-                </h2>
-
-                <p class="section-description">
-                    just a few things about what you'd like
-                    to do around here :)
-                </p>
-
-
-                <div class="form-area">
-
-                    <div class="question">
-
-                        <label for="why">
-                            what made you want to be part of Orisimul?
-                            <span class="required">*</span>
-                        </label>
-
-                        <textarea
-                            id="why"
-                            name="why"
-                            required
-                            placeholder="tell us why :)"></textarea>
-
-                    </div>
-
-
-                    <div class="question">
-
-                        <label for="projects">
-                            what kind of projects would you like
-                            to help with?
-                            <span class="required">*</span>
-                        </label>
-
-                        <textarea
-                            id="projects"
-                            name="projects"
-                            required
-                            placeholder="games, websites, coding, art..."></textarea>
-
-                    </div>
-
-
-                    <div class="question">
-
-                        <label for="learn">
-                            is there anything you'd like to learn or try?
-                        </label>
-
-                        <textarea
-                            id="learn"
-                            name="learn"
-                            placeholder="anything you've wanted to try?"></textarea>
-
-                    </div>
-
-
-                    <div class="question">
-
-                        <label for="dontWant">
-                            is there anything you wouldn't want to help with?
-                        </label>
-
-                        <textarea
-                            id="dontWant"
-                            name="dontWant"
-                            placeholder="it's completely okay to say no :)"></textarea>
-
-                    </div>
-
-                </div>
-
-
-                <div class="navigation">
-
-                    <button
-                        type="button"
-                        class="button secondary"
-                        onclick="previousPage()">
-
-                        ← back
-
-                    </button>
-
-
-                    <button
-                        type="button"
-                        class="button"
-                        onclick="nextPage()">
-
-                        next →
-
-                    </button>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- ==========================================
-             SECTION 3
-        =========================================== -->
-
-        <section class="page" data-page="3">
-
-            <div class="card">
-
-                <div class="section-title">
-                    future stuff
-                </div>
-
-                <h2 class="section-heading">
-                    maybe someday...
-                </h2>
-
-                <p class="section-description">
-
-                    At some point in the future, Orisimul might
-                    have a website or something similar where
-                    you can see the projects we're working on,
-                    see what everyone is up to, and learn a little
-                    about the people involved.
-
-                    <br><br>
-
-                    This wouldn't be a commercial thing or
-                    anything like that — just somewhere for
-                    Orisimul to exist outside of Discord.
-
-                </p>
-
-
-                <div class="form-area">
 
                     <div class="question">
 
                         <label>
                             would you like to have a profile
-                            on an Orisimul website?
-                            <span class="required">*</span>
+                            on an Orisimul website someday?
                         </label>
-
 
                         <div class="options">
 
                             <label class="option">
-
                                 <input
                                     type="radio"
                                     name="profile"
-                                    value="yes"
-                                    required>
+                                    value="yes">
 
                                 Yes
-
                             </label>
 
 
                             <label class="option">
-
                                 <input
                                     type="radio"
                                     name="profile"
                                     value="no">
 
                                 No
-
                             </label>
 
 
                             <label class="option">
-
                                 <input
                                     type="radio"
                                     name="profile"
                                     value="maybe">
 
                                 Maybe
-
                             </label>
 
                         </div>
@@ -412,12 +182,9 @@
                     </div>
 
 
-                    <!-- PROFILE FIELDS -->
-
                     <div
-                        class="profile-fields"
-                        id="profileFields">
-
+                        id="profileFields"
+                        class="profile-fields">
 
                         <div class="question">
 
@@ -428,7 +195,6 @@
                             <input
                                 id="profileUsername"
                                 type="text"
-                                name="profileUsername"
                                 placeholder="something like h4ran">
 
                         </div>
@@ -443,7 +209,6 @@
                             <input
                                 id="profileName"
                                 type="text"
-                                name="profileName"
                                 placeholder="display name">
 
                         </div>
@@ -458,7 +223,6 @@
 
                             <textarea
                                 id="profileBio"
-                                name="profileBio"
                                 placeholder="a little bio..."></textarea>
 
                         </div>
@@ -472,7 +236,6 @@
 
                             <textarea
                                 id="profileInterests"
-                                name="profileInterests"
                                 placeholder="things you like..."></textarea>
 
                         </div>
@@ -487,7 +250,6 @@
 
                             <textarea
                                 id="profileSkills"
-                                name="profileSkills"
                                 placeholder="coding, art, building things..."></textarea>
 
                         </div>
@@ -502,453 +264,16 @@
 
                             <textarea
                                 id="profileExtra"
-                                name="profileExtra"
                                 placeholder="anything else?"></textarea>
 
                         </div>
 
-
-                        <!-- PROFILE PICTURE -->
-
-                        <div class="question">
-
-                            <label>
-                                would you want a profile picture?
-                            </label>
-
-
-                            <div class="options">
-
-                                <label class="option">
-
-                                    <input
-                                        type="radio"
-                                        name="pfp"
-                                        value="yes">
-
-                                    Yes
-
-                                </label>
-
-
-                                <label class="option">
-
-                                    <input
-                                        type="radio"
-                                        name="pfp"
-                                        value="no">
-
-                                    No
-
-                                </label>
-
-                            </div>
-
-
-                            <!-- PFP TOKEN -->
-
-                            <div
-                                class="token-box"
-                                id="tokenBox">
-
-                                <div class="token-title">
-                                    YOUR PFP TOKEN
-                                </div>
-
-                                <div
-                                    class="token"
-                                    id="pfpToken">
-
-                                    OR-XXXXX
-
-                                </div>
-
-                                <div class="token-info">
-
-                                    this token doesn't really
-                                    mean anything lol
-
-                                    <br>
-
-                                    DM H4RAN this token along
-                                    with the profile picture you
-                                    want to use :)
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
                     </div>
 
                 </div>
 
 
                 <div class="navigation">
-
-                    <button
-                        type="button"
-                        class="button secondary"
-                        onclick="previousPage()">
-
-                        ← back
-
-                    </button>
-
-
-                    <button
-                        type="button"
-                        class="button"
-                        onclick="nextPage()">
-
-                        next →
-
-                    </button>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- ==========================================
-             SECTION 4
-        =========================================== -->
-
-        <section class="page" data-page="4">
-
-            <div class="card">
-
-                <div class="section-title">
-                    ALMOST DONE!!!
-                </div>
-
-                <h2 class="section-heading">
-                    working together
-                </h2>
-
-                <p class="section-description">
-                    just a few things that can help make
-                    working together easier :)
-                </p>
-
-
-                <div class="form-area">
-
-
-                    <div class="question">
-
-                        <label for="support">
-                            is there anything I should know
-                            that would help me support you
-                            while working with Orisimul?
-                        </label>
-
-                        <div class="description">
-
-                            For example: needing breaks,
-                            communication preferences,
-                            things that make teamwork easier
-                            for you.
-
-                        </div>
-
-                        <textarea
-                            id="support"
-                            name="support"
-                            placeholder="anything that would help..."></textarea>
-
-                    </div>
-
-
-                    <div class="question">
-
-                        <label>
-                            rate your availability
-                        </label>
-
-                        <div class="scale">
-
-                            <label>
-                                <input
-                                    type="radio"
-                                    name="availability"
-                                    value="1">
-                                1
-                            </label>
-
-                            <label>
-                                <input
-                                    type="radio"
-                                    name="availability"
-                                    value="2">
-                                2
-                            </label>
-
-                            <label>
-                                <input
-                                    type="radio"
-                                    name="availability"
-                                    value="3">
-                                3
-                            </label>
-
-                            <label>
-                                <input
-                                    type="radio"
-                                    name="availability"
-                                    value="4">
-                                4
-                            </label>
-
-                            <label>
-                                <input
-                                    type="radio"
-                                    name="availability"
-                                    value="5">
-                                5
-                            </label>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="question">
-
-                        <label>
-                            how comfortable are you talking
-                            to people you don't know?
-                        </label>
-
-                        <div class="scale">
-
-                            <label>
-                                <input
-                                    type="radio"
-                                    name="social"
-                                    value="1">
-                                1
-                            </label>
-
-                            <label>
-                                <input
-                                    type="radio"
-                                    name="social"
-                                    value="2">
-                                2
-                            </label>
-
-                            <label>
-                                <input
-                                    type="radio"
-                                    name="social"
-                                    value="3">
-                                3
-                            </label>
-
-                            <label>
-                                <input
-                                    type="radio"
-                                    name="social"
-                                    value="4">
-                                4
-                            </label>
-
-                            <label>
-                                <input
-                                    type="radio"
-                                    name="social"
-                                    value="5">
-                                5
-                            </label>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="question">
-
-                        <label for="communication">
-                            how do you prefer to communicate?
-                        </label>
-
-                        <textarea
-                            id="communication"
-                            name="communication"
-                            placeholder="Discord, DMs, voice calls..."></textarea>
-
-                    </div>
-
-
-                    <div class="question">
-
-                        <label for="teamworkEasy">
-                            is there anything that makes
-                            working with other people easier
-                            for you?
-                        </label>
-
-                        <textarea
-                            id="teamworkEasy"
-                            name="teamworkEasy"
-                            placeholder="anything that helps :)"></textarea>
-
-                    </div>
-
-
-                    <div class="question">
-
-                        <label for="teamworkDifficult">
-                            is there anything that makes
-                            group work difficult or uncomfortable
-                            for you?
-                        </label>
-
-                        <textarea
-                            id="teamworkDifficult"
-                            name="teamworkDifficult"
-                            placeholder="anything we should know?"></textarea>
-
-                    </div>
-
-
-                    <div class="question">
-
-                        <label>
-                            do you understand that Orisimul
-                            is a passion project/community made
-                            for fun, and isn't being created as
-                            a commercial business?
-                            <span class="required">*</span>
-                        </label>
-
-
-                        <div class="options">
-
-                            <label class="option">
-
-                                <input
-                                    type="radio"
-                                    name="understand"
-                                    value="yes"
-                                    required>
-
-                                yes
-
-                            </label>
-
-
-                            <label class="option">
-
-                                <input
-                                    type="radio"
-                                    name="understand"
-                                    value="no">
-
-                                no
-
-                            </label>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <div class="navigation">
-
-                    <button
-                        type="button"
-                        class="button secondary"
-                        onclick="previousPage()">
-
-                        ← back
-
-                    </button>
-
-
-                    <button
-                        type="button"
-                        class="button"
-                        onclick="nextPage()">
-
-                        next →
-
-                    </button>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- ==========================================
-             SECTION 5
-        =========================================== -->
-
-        <section class="page" data-page="5">
-
-            <div class="card">
-
-                <div class="section-title">
-                    YOU'RE DONE!!!
-                </div>
-
-                <h2 class="section-heading">
-                    one last thing :)
-                </h2>
-
-
-                <div class="form-area">
-
-
-                    <div class="question">
-
-                        <label for="questions">
-                            do you have any questions of your own?
-                        </label>
-
-                        <textarea
-                            id="questions"
-                            name="questions"
-                            placeholder="anything you want to ask..."></textarea>
-
-                    </div>
-
-
-                    <div class="question">
-
-                        <label for="extra">
-                            anything else you want to add :)
-                        </label>
-
-                        <textarea
-                            id="extra"
-                            name="extra"
-                            placeholder="anything else..."></textarea>
-
-                    </div>
-
-                </div>
-
-
-                <div class="navigation">
-
-                    <button
-                        type="button"
-                        class="button secondary"
-                        onclick="previousPage()">
-
-                        ← back
-
-                    </button>
-
 
                     <button
                         type="button"
@@ -966,16 +291,14 @@
         </section>
 
 
-        <!-- ==========================================
-             THANK YOU
-        =========================================== -->
-
-        <section class="page" data-page="6">
+        <section
+            id="thanks"
+            class="thanks">
 
             <div class="thanks-box">
 
                 <div class="section-title">
-                    ORISIMUL™
+                    ORISIMUL
                 </div>
 
                 <h1>
@@ -983,58 +306,18 @@
                 </h1>
 
                 <p>
-
                     thanks for taking the time to fill this out
                     and welcome to Orisimul :D
-
-                    <br><br>
-
-                    you will be DMED when there's an update :)
-
                 </p>
-
-
-                <!-- XCC THANK YOU -->
-
-                <div class="xcc-thanks">
-
-                    <strong>
-                        huge thanks to XCC :D
-                    </strong>
-
-                    <p>
-
-                        They came up with Orisimul Choir,
-                        which eventually became just
-                        <b>Orisimul</b>.
-
-                        <br><br>
-
-                        without them, we'd probably still be
-                        trying to figure out what to call this
-                        thing lol
-
-                    </p>
-
-                </div>
-
-
-                <div class="little-line">
-                    made together, just for fun.
-                </div>
 
             </div>
 
         </section>
 
 
-        <!-- FOOTER -->
-
         <footer class="footer">
 
-            <strong>
-                ORISIMUL™
-            </strong>
+            <strong>ORISIMUL</strong>
 
             <span>
                 made together, just for fun.
@@ -1050,3 +333,4 @@
 </body>
 
 </html>
+```
